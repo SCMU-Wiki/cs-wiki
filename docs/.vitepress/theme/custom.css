@@ -24,3 +24,21 @@
   --vp-c-brand-3: #2f8a66;
   --vp-c-brand-soft: rgba(60, 150, 114, 0.18);
 }
+
+/*
+ * 主题切换圆形扩散动画（View Transitions API）
+ * 禁用默认交叉淡化，由 JS 注入 clip-path 圆形动画
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}

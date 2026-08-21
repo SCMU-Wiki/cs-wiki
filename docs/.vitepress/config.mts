@@ -36,7 +36,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/SCUEC-Wiki/cs-wiki' },
+      { icon: 'github', link: 'https://github.com/SCMU-Wiki/cs-wiki' },
     ],
 
     footer: {

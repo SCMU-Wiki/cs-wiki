@@ -8,6 +8,9 @@ docs/.vitepress/dist/
 # 素材初稿（原始 docx 转换稿，不纳入版本库）
 _draft/
 
+# 个人学习笔记
+NOTES.md
+
 # 系统与编辑器
 .DS_Store
 Thumbs.db

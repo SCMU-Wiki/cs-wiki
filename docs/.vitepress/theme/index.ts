@@ -28,26 +28,16 @@ const Bridge = defineComponent({
 })
 
 /**
- * 不支持 View Transitions 时的兜底动画：遮罩圆形扩散。
- * 原理：创建一个目标主题色的圆形遮罩，从点击处扩散覆盖屏幕，
- * 中途切换主题，最后遮罩淡出露出新主题。
+ * 不支持 View Transitions 时的兜底动画：遮罩淡入淡出。
+ * 不用 clip-path 扩散：老内核（QQ 内置浏览器等）特性检测不可靠，
+ * 声称支持却渲染错位。统一降级为不依赖坐标的淡入淡出，永不错位。
  */
-function toggleThemeWithOverlay(x: number, y: number, r: number): void {
+function toggleThemeWithOverlay(): void {
   const root = document.documentElement
   const isDarkNow = root.classList.contains('dark')
   const targetDark = !isDarkNow
   const overlayColor = targetDark ? '#1e1e20' : '#ffffff' // VitePress 深/浅背景色
   const duration = window.matchMedia('(max-width: 960px)').matches ? 260 : 360
-  // 老内核（不支持 inset 简写）大概率 clip-path 坐标渲染也有 bug，统一降级为淡入淡出
-  const supportsModernCss =
-    typeof CSS !== 'undefined' &&
-    CSS.supports('clip-path', 'circle(50% at 50% 50%)') &&
-    CSS.supports('inset', '0')
-
-  const fadeTime = Math.round(duration / 3)
-  const transition = supportsModernCss
-    ? `clip-path ${duration}ms ease-in-out, opacity ${fadeTime}ms ease`
-    : `opacity ${fadeTime}ms ease`
 
   const overlay = document.createElement('div')
   overlay.style.cssText = `
@@ -55,20 +45,16 @@ function toggleThemeWithOverlay(x: number, y: number, r: number): void {
     z-index: 99999; pointer-events: none;
     background: ${overlayColor};
     opacity: 0;
-    transition: ${transition};
-    ${supportsModernCss ? `clip-path: circle(0 at ${x}px ${y}px)` : ''}
+    transition: opacity ${Math.round(duration / 2)}ms ease;
   `
   document.body.appendChild(overlay)
 
-  // 下一帧开始：淡入 + 扩散
+  // 下一帧开始淡入（盖住屏幕）
   requestAnimationFrame(() => {
     overlay.style.opacity = '1'
-    if (supportsModernCss) {
-      overlay.style.clipPath = `circle(${r}px at ${x}px ${y}px)`
-    }
   })
 
-  // 扩散到一半时切换主题
+  // 遮罩盖满后切换主题
   setTimeout(() => {
     root.classList.toggle('dark')
     const isDark = root.classList.contains('dark')
@@ -76,7 +62,7 @@ function toggleThemeWithOverlay(x: number, y: number, r: number): void {
     if (window.__vpIsDark) window.__vpIsDark.value = isDark
   }, duration / 2)
 
-  // 扩散完成后淡出遮罩
+  // 切换完成后淡出遮罩
   setTimeout(() => {
     overlay.style.opacity = '0'
   }, duration)
@@ -87,7 +73,7 @@ function toggleThemeWithOverlay(x: number, y: number, r: number): void {
  * 主题切换圆形扩散动画
  * 原理：拦截主题切换按钮点击，用 View Transitions API 包裹切换，
  * 给 ::view-transition-new(root) 注入 clip-path 圆形扩散动画。
- * 浏览器不支持 View Transitions 时自动降级为遮罩扩散动画。
+ * 浏览器不支持 View Transitions 时自动降级为遮罩淡入淡出。
  */
 function setupThemeTransition(): void {
   document.addEventListener(
@@ -106,7 +92,7 @@ function setupThemeTransition(): void {
       if (typeof document.startViewTransition !== 'function') {
         e.preventDefault()
         e.stopPropagation()
-        toggleThemeWithOverlay(x, y, r)
+        toggleThemeWithOverlay()
         return
       }
 

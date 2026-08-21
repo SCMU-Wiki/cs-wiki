@@ -48,7 +48,8 @@ function toggleThemeWithOverlay(x: number, y: number, r: number): void {
 
   const overlay = document.createElement('div')
   overlay.style.cssText = `
-    position: fixed; inset: 0; z-index: 99999; pointer-events: none;
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 99999; pointer-events: none;
     background: ${overlayColor};
     opacity: 0;
     transition: ${transition};

@@ -93,9 +93,10 @@ function setupThemeTransition(): void {
       const btn = target.closest('.VPSwitchAppearance')
       if (!btn) return
 
-      // 从点击位置计算扩散半径（保证覆盖整个屏幕）
-      const x = e.clientX
-      const y = e.clientY
+      // 以切换按钮中心为扩散圆心（移动端 WebView 合成点击坐标可能偏移，按钮中心最稳）
+      const rect = btn.getBoundingClientRect()
+      const x = rect.left + rect.width / 2
+      const y = rect.top + rect.height / 2
       const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
 
       if (typeof document.startViewTransition !== 'function') {

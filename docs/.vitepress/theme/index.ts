@@ -52,6 +52,10 @@ function setupThemeTransition(): void {
       root.style.setProperty('--vt-y', `${y}px`)
       root.style.setProperty('--vt-r', `${r}px`)
 
+      // 移动端（VitePress 窄屏断点 <960px）动画时长缩短，小屏更跟手
+      const isMobile = window.matchMedia('(max-width: 960px)').matches
+      const duration = isMobile ? 300 : 450
+
       // 拦截 VitePress 默认切换，改为自己触发
       e.preventDefault()
       e.stopPropagation()
@@ -77,7 +81,7 @@ function setupThemeTransition(): void {
             ],
           },
           {
-            duration: 450,
+            duration,
             easing: 'ease-in-out',
             pseudoElement: '::view-transition-new(root)',
           },

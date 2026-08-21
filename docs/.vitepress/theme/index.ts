@@ -38,11 +38,14 @@ function toggleThemeWithOverlay(x: number, y: number, r: number): void {
   const targetDark = !isDarkNow
   const overlayColor = targetDark ? '#1e1e20' : '#ffffff' // VitePress 深/浅背景色
   const duration = window.matchMedia('(max-width: 960px)').matches ? 260 : 360
-  const supportsClipPath =
-    typeof CSS !== 'undefined' && CSS.supports('clip-path', 'circle(50% at 50% 50%)')
+  // 老内核（不支持 inset 简写）大概率 clip-path 坐标渲染也有 bug，统一降级为淡入淡出
+  const supportsModernCss =
+    typeof CSS !== 'undefined' &&
+    CSS.supports('clip-path', 'circle(50% at 50% 50%)') &&
+    CSS.supports('inset', '0')
 
   const fadeTime = Math.round(duration / 3)
-  const transition = supportsClipPath
+  const transition = supportsModernCss
     ? `clip-path ${duration}ms ease-in-out, opacity ${fadeTime}ms ease`
     : `opacity ${fadeTime}ms ease`
 
@@ -53,14 +56,14 @@ function toggleThemeWithOverlay(x: number, y: number, r: number): void {
     background: ${overlayColor};
     opacity: 0;
     transition: ${transition};
-    ${supportsClipPath ? `clip-path: circle(0 at ${x}px ${y}px)` : ''}
+    ${supportsModernCss ? `clip-path: circle(0 at ${x}px ${y}px)` : ''}
   `
   document.body.appendChild(overlay)
 
   // 下一帧开始：淡入 + 扩散
   requestAnimationFrame(() => {
     overlay.style.opacity = '1'
-    if (supportsClipPath) {
+    if (supportsModernCss) {
       overlay.style.clipPath = `circle(${r}px at ${x}px ${y}px)`
     }
   })

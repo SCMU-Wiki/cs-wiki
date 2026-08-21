@@ -28,10 +28,52 @@ const Bridge = defineComponent({
 })
 
 /**
+ * 不支持 View Transitions 时的兜底动画：遮罩圆形扩散。
+ * 原理：创建一个目标主题色的圆形遮罩，从点击处扩散覆盖屏幕，
+ * 中途切换主题，最后遮罩淡出露出新主题。
+ */
+function toggleThemeWithOverlay(x: number, y: number, r: number): void {
+  const root = document.documentElement
+  const isDarkNow = root.classList.contains('dark')
+  const targetDark = !isDarkNow
+  const overlayColor = targetDark ? '#1e1e20' : '#ffffff' // VitePress 深/浅背景色
+  const duration = window.matchMedia('(max-width: 960px)').matches ? 260 : 360
+
+  const overlay = document.createElement('div')
+  overlay.style.cssText = `
+    position: fixed; inset: 0; z-index: 99999; pointer-events: none;
+    background: ${overlayColor};
+    clip-path: circle(0 at ${x}px ${y}px);
+    transition: clip-path ${duration}ms ease-in-out;
+  `
+  document.body.appendChild(overlay)
+
+  // 下一帧开始扩散
+  requestAnimationFrame(() => {
+    overlay.style.clipPath = `circle(${r}px at ${x}px ${y}px)`
+  })
+
+  // 扩散到一半时切换主题
+  setTimeout(() => {
+    root.classList.toggle('dark')
+    const isDark = root.classList.contains('dark')
+    localStorage.setItem(APPEARANCE_KEY, isDark ? 'dark' : '')
+    if (window.__vpIsDark) window.__vpIsDark.value = isDark
+  }, duration / 2)
+
+  // 扩散完成后淡出遮罩
+  setTimeout(() => {
+    overlay.style.transition = 'opacity 180ms ease'
+    overlay.style.opacity = '0'
+  }, duration)
+  setTimeout(() => overlay.remove(), duration + 200)
+}
+
+/**
  * 主题切换圆形扩散动画
  * 原理：拦截主题切换按钮点击，用 View Transitions API 包裹切换，
  * 给 ::view-transition-new(root) 注入 clip-path 圆形扩散动画。
- * 浏览器不支持 View Transitions 时自动降级为无动画直接切换。
+ * 浏览器不支持 View Transitions 时自动降级为遮罩扩散动画。
  */
 function setupThemeTransition(): void {
   document.addEventListener(
@@ -40,12 +82,18 @@ function setupThemeTransition(): void {
       const target = e.target as HTMLElement
       const btn = target.closest('.VPSwitchAppearance')
       if (!btn) return
-      if (typeof document.startViewTransition !== 'function') return
 
       // 从点击位置计算扩散半径（保证覆盖整个屏幕）
       const x = e.clientX
       const y = e.clientY
       const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
+
+      if (typeof document.startViewTransition !== 'function') {
+        e.preventDefault()
+        e.stopPropagation()
+        toggleThemeWithOverlay(x, y, r)
+        return
+      }
 
       const root = document.documentElement
       root.style.setProperty('--vt-x', `${x}px`)

@@ -38,19 +38,30 @@ function toggleThemeWithOverlay(x: number, y: number, r: number): void {
   const targetDark = !isDarkNow
   const overlayColor = targetDark ? '#1e1e20' : '#ffffff' // VitePress 深/浅背景色
   const duration = window.matchMedia('(max-width: 960px)').matches ? 260 : 360
+  const supportsClipPath =
+    typeof CSS !== 'undefined' && CSS.supports('clip-path', 'circle(50% at 50% 50%)')
+
+  const fadeTime = Math.round(duration / 3)
+  const transition = supportsClipPath
+    ? `clip-path ${duration}ms ease-in-out, opacity ${fadeTime}ms ease`
+    : `opacity ${fadeTime}ms ease`
 
   const overlay = document.createElement('div')
   overlay.style.cssText = `
     position: fixed; inset: 0; z-index: 99999; pointer-events: none;
     background: ${overlayColor};
-    clip-path: circle(0 at ${x}px ${y}px);
-    transition: clip-path ${duration}ms ease-in-out;
+    opacity: 0;
+    transition: ${transition};
+    ${supportsClipPath ? `clip-path: circle(0 at ${x}px ${y}px)` : ''}
   `
   document.body.appendChild(overlay)
 
-  // 下一帧开始扩散
+  // 下一帧开始：淡入 + 扩散
   requestAnimationFrame(() => {
-    overlay.style.clipPath = `circle(${r}px at ${x}px ${y}px)`
+    overlay.style.opacity = '1'
+    if (supportsClipPath) {
+      overlay.style.clipPath = `circle(${r}px at ${x}px ${y}px)`
+    }
   })
 
   // 扩散到一半时切换主题
@@ -63,10 +74,9 @@ function toggleThemeWithOverlay(x: number, y: number, r: number): void {
 
   // 扩散完成后淡出遮罩
   setTimeout(() => {
-    overlay.style.transition = 'opacity 180ms ease'
     overlay.style.opacity = '0'
   }, duration)
-  setTimeout(() => overlay.remove(), duration + 200)
+  setTimeout(() => overlay.remove(), duration + 250)
 }
 
 /**

@@ -20,6 +20,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # 完整 git 历史：页面历史插件需要（浅克隆只有最近 1 条提交）
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4

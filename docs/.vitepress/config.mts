@@ -78,6 +78,27 @@ export default defineConfig({
     search: {
       provider: 'local',
       options: {
+        // 中文分词优化：minisearch 默认不拆中文，配置 2-gram 让中文关键词可检索
+        miniSearch: {
+          options: {
+            tokenize: (text: string) => {
+              const english = text.match(/[a-zA-Z0-9]+/g) || []
+              const chinese = text.match(/[\u4e00-\u9fa5]+/g) || []
+              const tokens: string[] = [...english]
+              for (const seg of chinese) {
+                if (seg.length === 1) {
+                  tokens.push(seg)
+                  continue
+                }
+                // 2-gram：相邻两字一组（“绩点”→[绩点]，中文搜索更准）
+                for (let i = 0; i < seg.length - 1; i++) {
+                  tokens.push(seg.slice(i, i + 2))
+                }
+              }
+              return tokens
+            },
+          },
+        },
         translations: {
           button: { buttonText: '搜索', buttonAriaLabel: '搜索' },
           modal: {

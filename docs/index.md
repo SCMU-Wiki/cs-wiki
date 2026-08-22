@@ -1,5 +1,6 @@
 ---
 layout: home
+title: 首页
 
 hero:
   name: SCMU CS Wiki

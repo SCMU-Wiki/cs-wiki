@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { sidebar } from './sidebar'
 
 export default defineConfig({
   base: '/cs-wiki/',
@@ -16,20 +17,7 @@ export default defineConfig({
       { text: '学生组织', link: '/guide/organizations' },
     ],
 
-    sidebar: {
-      '/guide/': [
-        {
-          text: '指南总览',
-          items: [
-            { text: '欢迎', link: '/guide/welcome' },
-            { text: '入学必看', link: '/guide/admission' },
-            { text: '生活指南', link: '/guide/living' },
-            { text: '学业', link: '/guide/academic' },
-            { text: '学生组织', link: '/guide/organizations' },
-          ],
-        },
-      ],
-    },
+    sidebar,
 
     search: {
       provider: 'local',

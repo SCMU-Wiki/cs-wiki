@@ -4,7 +4,7 @@ layout: home
 hero:
   name: SCMU CS Wiki
   text: 中南民族大学计算机学院新生指南
-  tagline: 值得期待，不必焦虑，一切都来得及
+  tagline: 值得期待，不必焦虑，每一步都算数
   actions:
     - theme: brand
       text: 开始阅读

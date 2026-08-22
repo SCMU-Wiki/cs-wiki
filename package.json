@@ -11,5 +11,11 @@
   },
   "devDependencies": {
     "vitepress": "^1.6.4"
+  },
+  "dependencies": {
+    "@nolebase/vitepress-plugin-git-changelog": "^2.18.2"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true
   }
 }

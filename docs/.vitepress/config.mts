@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { sidebar } from './sidebar'
+import { GitChangelog } from '@nolebase/vitepress-plugin-git-changelog/vite'
 
 export default defineConfig({
   base: '/cs-wiki/',
@@ -7,6 +8,14 @@ export default defineConfig({
   title: 'SCMU CS Wiki',
   description: '中南民族大学计算机学院新生指南，学生自发维护的校园百科',
   cleanUrls: true,
+
+  vite: {
+    plugins: [
+      GitChangelog({
+        locale: 'zh-CN',
+      }),
+    ],
+  },
 
   themeConfig: {
     // UI 文案中文化（Menu / Search / On this page / Return to top 等）
@@ -66,12 +75,6 @@ export default defineConfig({
         dateStyle: 'medium',
         timeStyle: 'short',
       },
-    },
-
-    // 页面底部“编辑此页”链接（GitHub 文件页自带 History 历史记录）
-    editLink: {
-      pattern: 'https://github.com/SCMU-Wiki/cs-wiki/edit/main/docs/:path',
-      text: '在 GitHub 上编辑此页',
     },
   },
 })

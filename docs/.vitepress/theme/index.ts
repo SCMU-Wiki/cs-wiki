@@ -2,7 +2,7 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { defineComponent, h, nextTick, onMounted, watch, type Ref } from 'vue'
 import { useData, withBase } from 'vitepress'
-import HomeFeatures from './components/HomeFeatures.vue'
+import { NolebaseGitChangelog } from '@nolebase/vitepress-plugin-git-changelog/client'
 import './custom.css'
 
 const APPEARANCE_KEY = 'vitepress-theme-appearance'
@@ -47,7 +47,15 @@ const Bridge = defineComponent({
     watch(frontmatter, bindCardLinks)
     onMounted(bindCardLinks)
 
-    return () => h(DefaultTheme.Layout)
+    return () =>
+      h(
+        DefaultTheme.Layout,
+        null,
+        {
+          // 页面历史：注入 GitChangelog 组件（上交同款）
+          'doc-after': () => h(NolebaseGitChangelog),
+        },
+      )
   },
 })
 

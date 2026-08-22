@@ -67,19 +67,51 @@
     radial-gradient(ellipse 65% 45% at 85% 20%, rgba(43, 127, 212, 0.08), transparent 70%);
 }
 
-/* 桌面右侧的院徽垂直上移：接近与“新生指南”标题行平齐（transform 不改变布局流） */
+/* 宽屏（≥960）：左右布局 + 院徽位移调整 */
 @media (min-width: 960px) {
   .VPHomeHero .image-container {
     transform: translate(-60px, -130px);
   }
 }
 
-/* 小屏：确保院徽水平居中 */
+/* 窄屏（<960）：强制院徽水平居中 + 拉开间距
+   原生的负 margin 会把院徽和文字挤在一起，这里覆盖为舒适间距 */
 @media (max-width: 959px) {
-  .VPHomeHero .image-container {
-    margin: 0 auto;
+  /* 整体下移：增大顶部留白，与导航栏文字隔开 */
+  .VPHomeHero {
+    padding-top: calc(var(--vp-nav-height, 0px) + 160px);
+  }
+
+  .VPHomeHero .image {
     display: flex;
     justify-content: center;
+    margin-bottom: 16px !important;
+  }
+
+  .VPHomeHero .image-container {
+    margin: 0 auto !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .VPHomeHero .image-container img {
+    position: static !important;
+    transform: none !important;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* 文字间距拉开 */
+  .VPHomeHero .heading {
+    gap: 10px;
+  }
+
+  .VPHomeHero .tagline {
+    padding-top: 14px;
+  }
+
+  .VPHomeHero .actions {
+    padding-top: 30px;
   }
 }
 

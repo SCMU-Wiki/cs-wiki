@@ -10,7 +10,8 @@ export default defineConfig({
   cleanUrls: true,
 
   head: [
-    ['link', { rel: 'icon', type: 'image/png', href: '/images/favicon.png' }],
+    // 注意：head 里的路径不会自动加 base，这里写死 /cs-wiki/ 前缀
+    ['link', { rel: 'icon', type: 'image/png', href: '/cs-wiki/images/favicon.png' }],
   ],
 
   vite: {

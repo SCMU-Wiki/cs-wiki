@@ -13,6 +13,7 @@ export default defineConfig({
     plugins: [
       GitChangelog({
         locale: 'zh-CN',
+        repoURL: 'https://github.com/SCMU-Wiki/cs-wiki',
       }),
     ],
   },

@@ -64,3 +64,43 @@
 .VPFeatures .item:hover .box .title {
   color: var(--vp-c-brand-1);
 }
+
+/* ===== 页面历史（NolebaseGitChangelog）美化 ===== */
+.vp-nolebase-git-changelog {
+  margin-top: 28px;
+}
+
+/* “最后编辑于”标题弱化 */
+.vp-nolebase-git-changelog-last-edited-title {
+  color: var(--vp-c-text-2);
+  font-weight: 500;
+}
+
+/* commit 时间线容器：浅绿底 + 圆角 + 细边框 */
+.vp-nolebase-git-changelog-history-list {
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(0, 114, 72, 0.045);
+  border: 1px solid rgba(0, 114, 72, 0.12);
+}
+
+/* 时间线节点：民大绿 */
+.vp-nolebase-git-changelog .i-octicon\\:git-commit-16 {
+  background-color: var(--vp-c-brand-1);
+  opacity: 0.55;
+}
+
+/* commit hash：等宽 + 品牌色加粗（插件依赖 UnoCSS 的类不生效，需显式指定） */
+.vp-nolebase-git-changelog code {
+  font-family: var(--vp-font-family-mono);
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* 日期弱化 */
+.vp-nolebase-git-changelog [class*='op-50'] {
+  color: var(--vp-c-text-3);
+}

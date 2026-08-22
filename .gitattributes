@@ -1,0 +1,6 @@
+# GitHub Linguist 语言统计修正：
+# 让 .ts/.mts/.vue 被正确识别，避免仓库显示 100% PowerShell
+*.ts   linguist-language=TypeScript
+*.mts  linguist-language=TypeScript
+*.vue  linguist-language=Vue
+*.css  linguist-language=CSS

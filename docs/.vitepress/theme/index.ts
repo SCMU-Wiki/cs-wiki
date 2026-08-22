@@ -3,6 +3,8 @@ import DefaultTheme from 'vitepress/theme'
 import { defineComponent, h, nextTick, onMounted, watch, type Ref } from 'vue'
 import { useData, withBase } from 'vitepress'
 import { NolebaseGitChangelog } from '@nolebase/vitepress-plugin-git-changelog/client'
+import PageInfo from './components/PageInfo.vue'
+import FeedbackBox from './components/FeedbackBox.vue'
 import './custom.css'
 
 const APPEARANCE_KEY = 'vitepress-theme-appearance'
@@ -52,8 +54,11 @@ const Bridge = defineComponent({
         DefaultTheme.Layout,
         null,
         {
-          // 页面历史：注入 GitChangelog 组件（上交同款）
-          'doc-after': () => h(NolebaseGitChangelog),
+          // 页头信息条（最后更新 / 字数 / 阅读时间）
+          'doc-before': () => h(PageInfo),
+          // 页尾：意见反馈 + 页面历史（上交同款结构）
+          'doc-after': () =>
+            h('div', null, [h(FeedbackBox), h(NolebaseGitChangelog)]),
         },
       )
   },

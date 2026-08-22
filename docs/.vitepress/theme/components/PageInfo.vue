@@ -4,6 +4,9 @@ import { computed, nextTick, onMounted, ref } from 'vue'
 
 const { page } = useData()
 
+// 作者：统一匿名（保护贡献者隐私）
+const author = '匿名'
+
 // 最后更新时间
 const lastUpdated = computed(() => {
   const ts = page.value.lastUpdated
@@ -19,11 +22,14 @@ const wordCount = ref(0)
 const readTime = ref('')
 
 // 统计逻辑提取为函数，路由切换后重新计算
-// nextTick 保证 DOM 已更新为当前页内容（onContentUpdated 触发时可能还在旧内容）
+// nextTick 保证 DOM 已更新为当前页内容；若内容未渲染则稍后重试（移动端首屏时序更紧）
 const calcStats = () => {
   nextTick(() => {
     const doc = document.querySelector('.vp-doc')
-    if (!doc) return
+    if (!doc) {
+      setTimeout(calcStats, 150)
+      return
+    }
     const text = (doc.textContent || '').replace(/\s+/g, '')
     // 中文字符 + 英文单词混合估算
     const chinese = (text.match(/[\u4e00-\u9fa5]/g) || []).length
@@ -42,6 +48,9 @@ onContentUpdated(calcStats)
 
 <template>
   <div class="page-info">
+    <span class="pi-item">
+      <span class="pi-icon">👤</span> 作者：{{ author }}
+    </span>
     <span v-if="lastUpdated" class="pi-item">
       <span class="pi-icon">🕒</span> 最后更新：{{ lastUpdated }}
     </span>

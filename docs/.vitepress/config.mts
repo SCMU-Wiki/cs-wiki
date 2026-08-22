@@ -9,6 +9,10 @@ export default defineConfig({
   description: '中南民族大学计算机学院新生指南，学生自发维护的校园百科',
   cleanUrls: true,
 
+  head: [
+    ['link', { rel: 'icon', type: 'image/png', href: '/images/favicon.png' }],
+  ],
+
   vite: {
     plugins: [
       GitChangelog({

@@ -127,11 +127,8 @@
   width: 230px;
   height: 230px;
   object-fit: cover;
-  /* 绿色柔光：光晕加大，蓝院徽被绿光包裹 */
-  box-shadow:
-    0 0 0 10px rgba(0, 114, 72, 0.1),
-    0 0 56px rgba(0, 114, 72, 0.32),
-    0 10px 34px rgba(0, 0, 0, 0.12);
+  /* logo 自带蓝环，去掉绿色光晕避免冲突，只留柔和阴影 */
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
   animation: hero-float 6s ease-in-out infinite;
 }
 

@@ -77,19 +77,19 @@
   font-weight: 500;
 }
 
-/* 页面历史容器（折叠/展开共用，仿上交）：浅灰圆角卡片，折叠时紧凑一行 */
+/* 页面历史容器（折叠/展开共用）：民大绿调卡片 */
 .vp-nolebase-git-changelog-history-container {
   padding: 10px 16px;
   border-radius: 10px;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
+  background: rgba(0, 114, 72, 0.06);
+  border: 1px solid rgba(0, 114, 72, 0.16);
 }
 
 /* commit 时间线列表（展开时）：在容器内直接显示，不再额外套卡片 */
 .vp-nolebase-git-changelog-history-container > div[class*='grid'] {
   margin-top: 6px;
   padding-top: 10px;
-  border-top: 1px dashed var(--vp-c-divider);
+  border-top: 1px dashed rgba(0, 114, 72, 0.22);
 }
 
 /* 时间线节点：民大绿 */

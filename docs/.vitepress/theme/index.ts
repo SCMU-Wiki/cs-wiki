@@ -56,9 +56,9 @@ const Bridge = defineComponent({
         {
           // 页头信息条（最后更新 / 字数 / 阅读时间）
           'doc-before': () => h(PageInfo),
-          // 页尾：意见反馈 + 页面历史（上交同款结构）
+          // 页尾：意见反馈 + 页面历史（上交同款结构，vp-doc 保证标题样式）
           'doc-after': () =>
-            h('div', null, [h(FeedbackBox), h(NolebaseGitChangelog)]),
+            h('div', { class: 'vp-doc' }, [h(FeedbackBox), h(NolebaseGitChangelog)]),
         },
       )
   },

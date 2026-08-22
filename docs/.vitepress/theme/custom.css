@@ -68,6 +68,7 @@
 /* ===== 页面历史（NolebaseGitChangelog）美化 ===== */
 .vp-nolebase-git-changelog {
   margin-top: 28px;
+  font-size: 13px;
 }
 
 /* “最后编辑于”标题弱化 */
@@ -76,13 +77,19 @@
   font-weight: 500;
 }
 
-/* commit 时间线列表（展开时才显示）：浅绿底 + 圆角 + 细边框
-   折叠时外层只有一行标题，保持紧凑 */
+/* 页面历史容器（折叠/展开共用，仿上交）：浅灰圆角卡片，折叠时紧凑一行 */
+.vp-nolebase-git-changelog-history-container {
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+}
+
+/* commit 时间线列表（展开时）：在容器内直接显示，不再额外套卡片 */
 .vp-nolebase-git-changelog-history-container > div[class*='grid'] {
-  padding: 14px 18px;
-  border-radius: 12px;
-  background: rgba(0, 114, 72, 0.045);
-  border: 1px solid rgba(0, 114, 72, 0.12);
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--vp-c-divider);
 }
 
 /* 时间线节点：民大绿 */

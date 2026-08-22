@@ -14,6 +14,22 @@ export default defineConfig({
       GitChangelog({
         locale: 'zh-CN',
         repoURL: 'https://github.com/SCMU-Wiki/cs-wiki',
+        rewritePathsBy: {
+          handler: (_commit, path) => {
+            if (!path) return path
+            // 内容拆分前的旧文件：板块内页面追溯到旧文件，显示从 init 到拆分的完整历史
+            const legacyMap: [string, string][] = [
+              ['docs/guide/admission/', 'docs/guide/admission.md'],
+              ['docs/guide/living/', 'docs/guide/living.md'],
+              ['docs/guide/academic/', 'docs/guide/academic.md'],
+              ['docs/guide/organizations/', 'docs/guide/organizations.md'],
+            ]
+            for (const [prefix, legacy] of legacyMap) {
+              if (path.startsWith(prefix)) return legacy
+            }
+            return path
+          },
+        },
       }),
     ],
   },

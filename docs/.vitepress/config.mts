@@ -57,7 +57,7 @@ export default defineConfig({
     // 导航栏左上角 logo（仿上交：小 logo + 站名）
     logo: '/images/logo-v2.webp',
     // UI 文案中文化（Menu / Search / On this page / Return to top 等）
-    outlineTitle: '本页目录',
+    outlineTitle: '本页大纲',
     returnToTopLabel: '回到顶部',
     sidebarMenuLabel: '菜单',
     darkModeSwitchLabel: '主题',

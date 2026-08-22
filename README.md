@@ -14,18 +14,43 @@
 - GitHub Pages：免费静态托管
 - GitHub Actions：自动构建部署（push 即发布）
 
-## 本地开发
+## 构建项目
+
+### 环境要求
+
+- Node.js ≥ 20（推荐 24）
+- npm（随 Node 安装）
+
+### 克隆代码
+
+```bash
+git clone https://github.com/SCMU-Wiki/cs-wiki.git
+cd cs-wiki
+```
+
+### 安装依赖
 
 ```bash
 npm install
+```
+
+### 本地开发
+
+```bash
 npm run docs:dev     # 开发模式（localhost:5173，热更新）
 npm run docs:build   # 构建静态站点
 npm run docs:preview # 预览构建产物（localhost:4173）
 ```
 
-## 贡献
+也可以直接双击 `start-dev.bat` / `start-preview.bat` 一键启动。
 
-内容由学生自发维护，欢迎提交 PR 或 issue 补充、纠错、更新。所有内容仅供参考，请以学校官方通知为准。
+### 部署
+
+推送到 `main` 分支后，GitHub Actions 会自动构建并部署到 GitHub Pages，无需手动操作。
+
+## 参与建设
+
+内容由学生自发维护，欢迎提交 PR 或 issue 补充、纠错、更新。详细的参与方式（问卷反馈 / Issue / PR）见[贡献指南](docs/contributing.md)。所有内容仅供参考，请以学校官方通知为准。
 
 ## 致谢
 

@@ -9,6 +9,13 @@ export default defineConfig({
   description: '中南民族大学计算机学院新生指南，学生自发维护的校园百科',
   cleanUrls: true,
 
+  markdown: {
+    image: {
+      // 图片懒加载：滚动到才加载，首屏秒开（上交页面无图所以快，我们靠这个追平）
+      lazyLoading: true,
+    },
+  },
+
   head: [
     // 注意：head 里的路径不会自动加 base，这里写死 /cs-wiki/ 前缀
     ['link', { rel: 'icon', type: 'image/png', href: '/cs-wiki/images/favicon.png' }],

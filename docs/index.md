@@ -7,7 +7,7 @@ hero:
   text: 中南民族大学计算机学院新生指南
   tagline: 值得期待，不必焦虑，每一步都算数
   image:
-    src: /images/logo.webp
+    src: /images/logo-v2.webp
     alt: SCMU CS Wiki（中南民族大学双子塔 × 计算机学院）
   actions:
     - theme: brand

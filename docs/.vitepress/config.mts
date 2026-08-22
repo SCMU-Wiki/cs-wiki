@@ -54,6 +54,8 @@ export default defineConfig({
   },
 
   themeConfig: {
+    // 导航栏左上角 logo（仿上交：小 logo + 站名）
+    logo: '/images/logo-v2.webp',
     // UI 文案中文化（Menu / Search / On this page / Return to top 等）
     outlineTitle: '本页目录',
     returnToTopLabel: '回到顶部',

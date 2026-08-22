@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { withBase } from 'vitepress'
 // 问卷链接就绪后替换为腾讯问卷地址
 const feedbackUrl = 'https://github.com/SCMU-Wiki/cs-wiki/issues'
 </script>
@@ -7,10 +8,13 @@ const feedbackUrl = 'https://github.com/SCMU-Wiki/cs-wiki/issues'
   <div class="vp-doc feedback-box">
     <h2 id="意见反馈">意见反馈</h2>
     <div class="feedback-body">
-      <span>这个页面有什么问题？或者有什么建议？</span>
-      <a :href="feedbackUrl" target="_blank" rel="noopener">
-        请点击此处反馈，我们会尽快回复和处理。
-      </a>
+      <img :src="withBase('/images/logo-v2.webp')" alt="SCMU CS Wiki" class="feedback-logo" />
+      <span class="feedback-text">
+        <span>这个页面有什么问题？或者有什么建议？</span>
+        <a :href="feedbackUrl" target="_blank" rel="noopener">
+          请点击此处反馈，我们会尽快回复和处理。
+        </a>
+      </span>
     </div>
   </div>
 </template>
@@ -20,15 +24,30 @@ const feedbackUrl = 'https://github.com/SCMU-Wiki/cs-wiki/issues'
   margin-top: 32px;
 }
 
+.feedback-logo {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.feedback-text {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  align-items: baseline;
+  min-width: 0;
+}
+
 .feedback-body {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 8px;
-  align-items: baseline;
+  gap: 12px;
+  align-items: center;
   padding: 14px 18px;
   border-radius: 12px;
-  background: rgba(0, 114, 72, 0.045);
-  border: 1px solid rgba(0, 114, 72, 0.12);
+  background: rgba(0, 114, 72, 0.09);
+  border: 1px solid rgba(0, 114, 72, 0.18);
   font-size: 14px;
   color: var(--vp-c-text-2);
 }

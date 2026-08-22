@@ -42,3 +42,9 @@
 ::view-transition-new(root) {
   z-index: 9999;
 }
+
+/* 首页卡片 hover 反馈（配合 Bridge 组件里的点击跳转） */
+.VPFeatures .item:hover .box {
+  border-color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+}

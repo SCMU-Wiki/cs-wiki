@@ -1,7 +1,8 @@
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import { defineComponent, h, type Ref } from 'vue'
+import { defineComponent, h, nextTick, onMounted, watch, type Ref } from 'vue'
 import { useData } from 'vitepress'
+import HomeFeatures from './components/HomeFeatures.vue'
 import './custom.css'
 
 const APPEARANCE_KEY = 'vitepress-theme-appearance'
@@ -19,10 +20,32 @@ declare global {
 const Bridge = defineComponent({
   name: 'ThemeTransitionBridge',
   setup() {
-    const { isDark } = useData()
+    const { isDark, frontmatter } = useData()
     if (typeof window !== 'undefined') {
       window.__vpIsDark = isDark
     }
+
+    // 首页卡片点击跳转：VitePress features 默认不支持链接，用事件绑定实现
+    const bindCardLinks = () => {
+      const features = (frontmatter.value as { features?: { link?: string }[] } | undefined)
+        ?.features
+      if (!features?.length) return
+      nextTick(() => {
+        const items = document.querySelectorAll('.VPFeatures .item')
+        items.forEach((item, i) => {
+          const link = features[i]?.link
+          if (!link) return
+          const el = item as HTMLElement
+          el.style.cursor = 'pointer'
+          el.onclick = () => {
+            window.location.href = link
+          }
+        })
+      })
+    }
+    watch(frontmatter, bindCardLinks)
+    onMounted(bindCardLinks)
+
     return () => h(DefaultTheme.Layout)
   },
 })

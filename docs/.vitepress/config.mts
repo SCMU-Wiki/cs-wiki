@@ -9,18 +9,40 @@ export default defineConfig({
   cleanUrls: true,
 
   themeConfig: {
+    // UI 文案中文化（Menu / Search / On this page / Return to top 等）
+    outlineTitle: '本页目录',
+    returnToTopLabel: '回到顶部',
+    sidebarMenuLabel: '菜单',
+    darkModeSwitchLabel: '主题',
+    lightModeSwitchTitle: '切换到浅色模式',
+    darkModeSwitchTitle: '切换到深色模式',
+    skipToContentLabel: '跳转到内容',
+    docFooter: { prev: '上一页', next: '下一页' },
+
     nav: [
       { text: '首页', link: '/' },
-      { text: '入学必看', link: '/guide/admission' },
-      { text: '生活指南', link: '/guide/living' },
-      { text: '学业', link: '/guide/academic' },
-      { text: '学生组织', link: '/guide/organizations' },
+      { text: '站点导航', link: '/navigation' },
+      { text: '贡献指南', link: '/contributing' },
     ],
 
     sidebar,
 
     search: {
       provider: 'local',
+      options: {
+        translations: {
+          button: { buttonText: '搜索', buttonAriaLabel: '搜索' },
+          modal: {
+            noResultsText: '没有找到结果',
+            resetButtonTitle: '清除查询条件',
+            footer: {
+              selectText: '选择',
+              closeText: '关闭',
+              navigateText: '导航到结果',
+            },
+          },
+        },
+      },
     },
 
     socialLinks: [

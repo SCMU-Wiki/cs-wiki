@@ -9,9 +9,6 @@ hero:
     - theme: brand
       text: 开始阅读
       link: /guide/welcome
-    - theme: alt
-      text: 入学必看
-      link: /guide/admission
 
 features:
   - title: 入学必看 📦

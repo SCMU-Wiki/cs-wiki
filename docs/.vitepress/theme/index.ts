@@ -1,7 +1,7 @@
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { defineComponent, h, nextTick, onMounted, watch, type Ref } from 'vue'
-import { useData } from 'vitepress'
+import { useData, withBase } from 'vitepress'
 import HomeFeatures from './components/HomeFeatures.vue'
 import './custom.css'
 
@@ -38,7 +38,8 @@ const Bridge = defineComponent({
           const el = item as HTMLElement
           el.style.cursor = 'pointer'
           el.onclick = () => {
-            window.location.href = link
+            // withBase 补上前缀（/cs-wiki/），否则部署在子路径下会 404
+            window.location.href = withBase(link)
           }
         })
       })

@@ -9,6 +9,10 @@ import { defineComponent, h, nextTick, onMounted, watch, type Ref } from 'vue'
 import { useData, withBase } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { NolebaseGitChangelog } from '@nolebase/vitepress-plugin-git-changelog/client'
+import {
+  NolebaseEnhancedReadabilitiesMenu,
+  NolebaseEnhancedReadabilitiesScreenMenu,
+} from '@nolebase/vitepress-plugin-enhanced-readabilities/client'
 import PageInfo from './components/PageInfo.vue'
 import FeedbackBox from './components/FeedbackBox.vue'
 
@@ -56,6 +60,9 @@ const Bridge = defineComponent({
           'doc-before': () => h(PageInfo),
           'doc-after': () =>
             h('div', { class: 'vp-doc' }, [h(FeedbackBox), h(NolebaseGitChangelog)]),
+          // 阅读增强（含聚光灯）：导航栏 + 移动端菜单
+          'nav-bar-content-after': () => h(NolebaseEnhancedReadabilitiesMenu),
+          'nav-screen-content-after': () => h(NolebaseEnhancedReadabilitiesScreenMenu),
         },
       )
   },

@@ -15,6 +15,10 @@ export default defineConfig({
   ],
 
   vite: {
+    ssr: {
+      // 阅读增强插件含 .vue 组件，需打包处理（否则 SSR 阶段报未知扩展名）
+      noExternal: ['@nolebase/vitepress-plugin-enhanced-readabilities'],
+    },
     plugins: [
       GitChangelog({
         locale: 'zh-CN',

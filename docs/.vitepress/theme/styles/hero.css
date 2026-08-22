@@ -52,20 +52,17 @@
   }
 }
 
-/* 院徽圆角白底 + 呼吸浮动 */
-.VPHomeHero .image-container .image {
-  border-radius: 50%;
-  background: #fff;
-  border: 3px solid rgba(255, 255, 255, 0.85);
-  padding: 6px;
+/* 不需要渐变圆背景：logo 透明背景直接展示 */
+.VPHomeHero .image-bg {
+  display: none;
 }
 
+/* logo：完整显示（不圆形裁切），透明背景 */
 .VPHomeHero .image-container img {
-  border-radius: 50%;
-  width: 230px;
-  height: 230px;
-  object-fit: cover;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+  width: 210px;
+  height: 210px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.18));
   animation: hero-float 6s ease-in-out infinite;
 }
 

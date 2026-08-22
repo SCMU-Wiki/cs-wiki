@@ -43,8 +43,22 @@
   z-index: 9999;
 }
 
+/* 首页 feature 卡片外观：默认样式未覆盖 article.box 的圆角/边框/背景，这里补齐 */
+.VPFeatures .item .box {
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-divider);
+  background-color: var(--vp-c-bg-soft);
+  transition:
+    border-color 0.25s,
+    background-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.25s;
+}
+
 /* 首页卡片 hover 反馈（配合 Bridge 组件里的点击跳转） */
 .VPFeatures .item:hover .box {
   border-color: var(--vp-c-brand-1);
   background-color: var(--vp-c-brand-soft);
+  box-shadow: 0 4px 16px rgba(0, 114, 72, 0.15);
+  transform: translateY(-2px);
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
-import { computed, onMounted, ref } from 'vue'
+import { useData, onContentUpdated } from 'vitepress'
+import { computed, nextTick, onMounted, ref } from 'vue'
 
 const { page } = useData()
 
@@ -18,18 +18,26 @@ const lastUpdated = computed(() => {
 const wordCount = ref(0)
 const readTime = ref('')
 
-onMounted(() => {
-  const doc = document.querySelector('.vp-doc')
-  if (!doc) return
-  const text = (doc.textContent || '').replace(/\s+/g, '')
-  // 中文字符 + 英文单词混合估算
-  const chinese = (text.match(/[\u4e00-\u9fa5]/g) || []).length
-  const words = (text.match(/[a-zA-Z0-9]+/g) || []).length
-  wordCount.value = chinese + words
-  // 阅读速度按每分钟 400 字估算
-  const minutes = Math.max(1, Math.round((chinese + words) / 400))
-  readTime.value = `${minutes} 分钟`
-})
+// 统计逻辑提取为函数，路由切换后重新计算
+// nextTick 保证 DOM 已更新为当前页内容（onContentUpdated 触发时可能还在旧内容）
+const calcStats = () => {
+  nextTick(() => {
+    const doc = document.querySelector('.vp-doc')
+    if (!doc) return
+    const text = (doc.textContent || '').replace(/\s+/g, '')
+    // 中文字符 + 英文单词混合估算
+    const chinese = (text.match(/[\u4e00-\u9fa5]/g) || []).length
+    const words = (text.match(/[a-zA-Z0-9]+/g) || []).length
+    wordCount.value = chinese + words
+    // 阅读速度按每分钟 400 字估算
+    const minutes = Math.max(1, Math.round((chinese + words) / 400))
+    readTime.value = `${minutes} 分钟`
+  })
+}
+
+onMounted(calcStats)
+// SPA 路由切换后内容更新时重新统计
+onContentUpdated(calcStats)
 </script>
 
 <template>

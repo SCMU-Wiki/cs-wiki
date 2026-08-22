@@ -10,6 +10,11 @@
   --vp-c-brand-3: #00603d;
   --vp-c-brand-soft: rgba(0, 114, 72, 0.14);
 
+  /* “开始阅读”按钮：用民大绿而非默认更深的 brand-3 */
+  --vp-button-brand-bg: #007248;
+  --vp-button-brand-hover-bg: #0a8a5a;
+  --vp-button-brand-active-bg: #00603d;
+
   /* 首页 hero 区微调：SCMU CS Wiki 渐变（左民大绿 → 右院徽蓝，两种身份共存） */
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(120deg, #007248 0%, #1f9e6c 30%, #2b7fd4 65%, #4a9de0 100%);
@@ -57,7 +62,7 @@
 
 /* 首页 hero 院标：白底圆形徽章 + 绿色光晕 + 轻浮动 */
 .VPHomeHero .image-container {
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
 .VPHomeHero .image-container .image {
@@ -72,11 +77,11 @@
   width: 150px;
   height: 150px;
   object-fit: cover;
-  /* 绿色柔光：蓝院徽被绿光包裹，蓝绿和谐过渡 */
+  /* 绿色柔光：光晕加大，蓝院徽被绿光包裹 */
   box-shadow:
-    0 0 0 6px rgba(0, 114, 72, 0.08),
-    0 0 28px rgba(0, 114, 72, 0.25),
-    0 6px 24px rgba(0, 0, 0, 0.12);
+    0 0 0 8px rgba(0, 114, 72, 0.1),
+    0 0 46px rgba(0, 114, 72, 0.32),
+    0 8px 30px rgba(0, 0, 0, 0.12);
   animation: hero-float 6s ease-in-out infinite;
 }
 

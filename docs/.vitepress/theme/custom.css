@@ -10,9 +10,9 @@
   --vp-c-brand-3: #00603d;
   --vp-c-brand-soft: rgba(0, 114, 72, 0.14);
 
-  /* 首页 hero 区微调 */
+  /* 首页 hero 区微调：SCMU CS Wiki 渐变色（深绿 → 亮绿，层次更明显） */
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(120deg, #007248 30%, #3c9672);
+  --vp-home-hero-name-background: linear-gradient(120deg, #004a2a 0%, #007248 30%, #1f9e6c 65%, #46c493 100%);
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -55,7 +55,32 @@
     transform 0.25s;
 }
 
-/* 首页卡片 hover 反馈（克制版：无位移无阴影，品牌色响应） */
+/* 首页 hero 院标：白底圆形徽章，蓝绿隔离 */
+.VPHomeHero .image-container {
+  margin-bottom: 8px;
+}
+
+.VPHomeHero .image-container .image {
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  padding: 6px;
+}
+
+.VPHomeHero .image-container img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  .VPHomeHero .image-container img {
+    width: 96px;
+    height: 96px;
+  }
+}
 .VPFeatures .item:hover .box {
   border-color: var(--vp-c-brand-1);
   background-color: var(--vp-c-brand-soft);

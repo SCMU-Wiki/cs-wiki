@@ -13,6 +13,7 @@ import {
   NolebaseEnhancedReadabilitiesMenu,
   NolebaseEnhancedReadabilitiesScreenMenu,
 } from '@nolebase/vitepress-plugin-enhanced-readabilities/client'
+import { NolebaseHighlightTargetedHeading } from '@nolebase/vitepress-plugin-highlight-targeted-heading/client'
 import PageInfo from './components/PageInfo.vue'
 import FeedbackBox from './components/FeedbackBox.vue'
 
@@ -57,7 +58,8 @@ const Bridge = defineComponent({
         DefaultTheme.Layout,
         null,
         {
-          'doc-before': () => h(PageInfo),
+          'doc-before': () =>
+            h('div', null, [h(PageInfo), h(NolebaseHighlightTargetedHeading)]),
           'doc-after': () =>
             h('div', { class: 'vp-doc' }, [h(FeedbackBox), h(NolebaseGitChangelog)]),
           // 阅读增强（含聚光灯）：导航栏 + 移动端菜单

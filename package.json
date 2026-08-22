@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.18.2",
-    "@nolebase/vitepress-plugin-git-changelog": "^2.18.2"
+    "@nolebase/vitepress-plugin-git-changelog": "^2.18.2",
+    "@nolebase/vitepress-plugin-highlight-targeted-heading": "^2.18.2"
   },
   "allowScripts": {
     "esbuild@0.21.5": true

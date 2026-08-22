@@ -60,16 +60,17 @@
     transform 0.25s;
 }
 
-/* 首页 hero 院标：白底圆形徽章 + 绿色光晕 + 轻浮动
-   布局跟随 VitePress 原生（桌面右侧 / 小屏上方居中），不干预文字 */
-.VPHomeHero .image-container {
-  margin: 0;
+/* 首页 hero 背景：顶部淡绿光晕，打破纯白 */
+.VPHomeHero {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 114, 72, 0.08), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% 20%, rgba(43, 127, 212, 0.05), transparent 70%);
 }
 
-/* 桌面右侧的院徽垂直上移（transform 不改变布局流） */
+/* 桌面右侧的院徽垂直上移：接近与“新生指南”标题行平齐（transform 不改变布局流） */
 @media (min-width: 960px) {
   .VPHomeHero .image-container {
-    transform: translateY(-24px);
+    transform: translate(-60px, -130px);
   }
 }
 
@@ -82,8 +83,8 @@
 
 .VPHomeHero .image-container img {
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
+  width: 230px;
+  height: 230px;
   object-fit: cover;
   /* 绿色柔光：光晕加大，蓝院徽被绿光包裹 */
   box-shadow:
@@ -105,16 +106,25 @@
 
 @media (max-width: 640px) {
   .VPHomeHero .image-container img {
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
   }
 }
 
-/* “开始阅读”按钮加大 */
+/* “开始阅读”按钮加大 + 背景强制民大绿 */
 .VPHomeHero .VPButton {
-  font-size: 17px;
-  padding: 15px 36px;
+  font-size: 18px;
+  padding: 16px 40px;
   border-radius: 10px;
+}
+
+.VPHomeHero .VPButton.brand {
+  background-color: #007248 !important;
+  border-color: #007248 !important;
+}
+
+.VPHomeHero .VPButton.brand:hover {
+  background-color: #0a8a5a !important;
 }
 .VPFeatures .item:hover .box {
   border-color: var(--vp-c-brand-1);

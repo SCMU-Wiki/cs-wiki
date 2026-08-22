@@ -1,0 +1,78 @@
+/* 页面历史（NolebaseGitChangelog）美化 */
+
+.vp-nolebase-git-changelog {
+  margin-top: 28px;
+  font-size: 13px;
+}
+
+/* “最后编辑于”标题弱化 */
+.vp-nolebase-git-changelog-last-edited-title {
+  color: var(--vp-c-text-2);
+  font-weight: 500;
+}
+
+/* 折叠标题行：一行两端对齐（补齐 UnoCSS flex 类） */
+.vp-nolebase-git-changelog-history-container > label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+.vp-nolebase-git-changelog-title {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.vp-nolebase-git-changelog-last-edited-title,
+.vp-nolebase-git-changelog-view-full-history-title {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 修复箭头 svg 默认 300x150 撑高折叠区 */
+.vp-nolebase-git-changelog-title svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* 容器：民大绿卡片 */
+.vp-nolebase-git-changelog-history-container {
+  padding: 14px 16px !important;
+  border-radius: 10px !important;
+  background: rgba(0, 114, 72, 0.06) !important;
+  border: 1px solid rgba(0, 114, 72, 0.16) !important;
+}
+
+/* commit 时间线列表（展开时） */
+.vp-nolebase-git-changelog-history-container > div[class*='grid'] {
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(0, 114, 72, 0.22);
+}
+
+/* 时间线节点：民大绿 */
+.vp-nolebase-git-changelog .i-octicon\\:git-commit-16 {
+  background-color: var(--vp-c-brand-1);
+  opacity: 0.55;
+}
+
+/* commit hash：等宽 + 品牌色加粗 */
+.vp-nolebase-git-changelog code {
+  font-family: var(--vp-font-family-mono);
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* 日期弱化 */
+.vp-nolebase-git-changelog [class*='op-50'] {
+  color: var(--vp-c-text-3);
+}

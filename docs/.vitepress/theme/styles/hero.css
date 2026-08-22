@@ -1,0 +1,103 @@
+/* 首页 hero：背景、院徽、按钮 */
+
+/* 背景：顶部淡绿光晕，打破纯白 */
+.VPHomeHero {
+  background:
+    radial-gradient(ellipse 85% 55% at 50% 0%, rgba(0, 114, 72, 0.18), transparent 70%),
+    radial-gradient(ellipse 65% 45% at 85% 20%, rgba(43, 127, 212, 0.08), transparent 70%);
+}
+
+/* 宽屏（≥960）：左右布局 + 院徽位移调整 */
+@media (min-width: 960px) {
+  .VPHomeHero .image-container {
+    transform: translate(-60px, -130px);
+  }
+}
+
+/* 窄屏（<960）：院徽水平居中 + 间距拉开 + 整体下移 */
+@media (max-width: 959px) {
+  .VPHero {
+    padding-top: calc(var(--vp-nav-height, 0px) + 130px) !important;
+  }
+
+  .VPHomeHero .image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px !important;
+  }
+
+  .VPHomeHero .image-container {
+    margin: 0 auto !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .VPHomeHero .image-container img {
+    position: static !important;
+    transform: none !important;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .VPHomeHero .heading {
+    gap: 10px;
+  }
+
+  .VPHomeHero .tagline {
+    padding-top: 14px;
+  }
+
+  .VPHomeHero .actions {
+    padding-top: 30px;
+  }
+}
+
+/* 院徽圆角白底 + 呼吸浮动 */
+.VPHomeHero .image-container .image {
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  padding: 6px;
+}
+
+.VPHomeHero .image-container img {
+  border-radius: 50%;
+  width: 230px;
+  height: 230px;
+  object-fit: cover;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+  animation: hero-float 6s ease-in-out infinite;
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 640px) {
+  .VPHomeHero .image-container img {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* “开始阅读”按钮：加大 + 民大绿 */
+.VPHomeHero .VPButton {
+  font-size: 18px;
+  padding: 16px 40px;
+  border-radius: 10px;
+}
+
+.VPHomeHero .VPButton.brand {
+  background-color: #007248 !important;
+  border-color: #007248 !important;
+}
+
+.VPHomeHero .VPButton.brand:hover {
+  background-color: #0a8a5a !important;
+}

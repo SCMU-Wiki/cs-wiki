@@ -1,0 +1,47 @@
+/*
+ * 基础品牌色：中南民族大学校徽标准绿 #007248
+ */
+
+:root {
+  --vp-c-brand-1: #007248;
+  --vp-c-brand-2: #0a8a5a;
+  --vp-c-brand-3: #00603d;
+  --vp-c-brand-soft: rgba(0, 114, 72, 0.14);
+
+  /* “开始阅读”按钮：用民大绿而非默认更深的 brand-3 */
+  --vp-button-brand-bg: #007248;
+  --vp-button-brand-hover-bg: #0a8a5a;
+  --vp-button-brand-active-bg: #00603d;
+
+  /* 首页 hero 标题渐变：左民大绿 → 右院徽蓝 */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #007248 0%, #1f9e6c 30%, #2b7fd4 65%, #4a9de0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* 深色模式下的绿色系（稍亮，保证可读性） */
+.dark {
+  --vp-c-brand-1: #3c9672;
+  --vp-c-brand-2: #4fa884;
+  --vp-c-brand-3: #2f8a66;
+  --vp-c-brand-soft: rgba(60, 150, 114, 0.18);
+}
+
+/*
+ * 主题切换圆形扩散动画（View Transitions API）
+ * 禁用默认交叉淡化，由 JS 注入 clip-path 圆形动画
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}

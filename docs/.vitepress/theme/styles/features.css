@@ -1,0 +1,21 @@
+/* 首页 feature 卡片：外观补齐 + hover 品牌色响应 */
+
+.VPFeatures .item .box {
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-divider);
+  background-color: var(--vp-c-bg-soft);
+  transition:
+    border-color 0.25s,
+    background-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.25s;
+}
+
+.VPFeatures .item:hover .box {
+  border-color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+}
+
+.VPFeatures .item:hover .box .title {
+  color: var(--vp-c-brand-1);
+}

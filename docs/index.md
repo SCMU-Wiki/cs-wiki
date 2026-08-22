@@ -4,8 +4,8 @@ title: 首页
 
 hero:
   name: SCMU CS Wiki
-  text: 中南民族大学计算机学院新生指南
-  tagline: 值得期待，不必焦虑，每一步都算数
+  text: 中南民族大学计算机学院百科平台
+  tagline: 先长成一颗梧桐，再遇春风
   image:
     src: /images/logo-v2.webp
     alt: SCMU CS Wiki（中南民族大学双子塔 × 计算机学院）

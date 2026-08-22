@@ -61,5 +61,11 @@ export default defineConfig({
         timeStyle: 'short',
       },
     },
+
+    // 页面底部“编辑此页”链接（GitHub 文件页自带 History 历史记录）
+    editLink: {
+      pattern: 'https://github.com/SCMU-Wiki/cs-wiki/edit/main/docs/:path',
+      text: '在 GitHub 上编辑此页',
+    },
   },
 })

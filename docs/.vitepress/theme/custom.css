@@ -60,9 +60,10 @@
     transform 0.25s;
 }
 
-/* 首页 hero 院标：白底圆形徽章 + 绿色光晕 + 轻浮动 */
+/* 首页 hero 院标：白底圆形徽章 + 绿色光晕 + 轻浮动
+   布局跟随 VitePress 原生（桌面右侧 / 小屏上方居中），不干预文字 */
 .VPHomeHero .image-container {
-  margin-bottom: 16px;
+  margin: 0;
 }
 
 .VPHomeHero .image-container .image {
@@ -74,14 +75,14 @@
 
 .VPHomeHero .image-container img {
   border-radius: 50%;
-  width: 175px;
-  height: 175px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   /* 绿色柔光：光晕加大，蓝院徽被绿光包裹 */
   box-shadow:
-    0 0 0 8px rgba(0, 114, 72, 0.1),
-    0 0 46px rgba(0, 114, 72, 0.32),
-    0 8px 30px rgba(0, 0, 0, 0.12);
+    0 0 0 10px rgba(0, 114, 72, 0.1),
+    0 0 56px rgba(0, 114, 72, 0.32),
+    0 10px 34px rgba(0, 0, 0, 0.12);
   animation: hero-float 6s ease-in-out infinite;
 }
 
@@ -97,15 +98,16 @@
 
 @media (max-width: 640px) {
   .VPHomeHero .image-container img {
-    width: 125px;
-    height: 125px;
+    width: 140px;
+    height: 140px;
   }
 }
 
 /* “开始阅读”按钮加大 */
 .VPHomeHero .VPButton {
-  font-size: 16px;
-  padding: 14px 32px;
+  font-size: 17px;
+  padding: 15px 36px;
+  border-radius: 10px;
 }
 .VPFeatures .item:hover .box {
   border-color: var(--vp-c-brand-1);

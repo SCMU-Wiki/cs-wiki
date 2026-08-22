@@ -19,6 +19,12 @@ export default defineConfig({
     skipToContentLabel: '跳转到内容',
     docFooter: { prev: '上一页', next: '下一页' },
 
+    // 页面历史：跳转到 GitHub 编辑/查看该页（含完整修改记录）
+    editLink: {
+      pattern: 'https://github.com/SCMU-Wiki/cs-wiki/edit/main/docs/:path',
+      text: '在 GitHub 上编辑此页',
+    },
+
     nav: [
       { text: '首页', link: '/' },
       { text: '站点导航', link: '/navigation' },

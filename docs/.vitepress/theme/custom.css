@@ -77,7 +77,11 @@
   font-weight: 500;
 }
 
-/* 折叠标题行：一行两端对齐（插件依赖的 UnoCSS flex 类不生效，显式补齐） */
+/* 修复箭头 svg 默认 300x150 撑高折叠区（UnoCSS 图标类失效后 svg 无尺寸） */
+.vp-nolebase-git-changelog-title svg {
+  width: 16px !important;
+  height: 16px !important;
+}
 .vp-nolebase-git-changelog-history-container > label {
   display: flex;
   align-items: center;

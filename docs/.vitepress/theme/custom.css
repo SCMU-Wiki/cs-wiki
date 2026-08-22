@@ -77,7 +77,14 @@
   font-weight: 500;
 }
 
-/* 页面历史容器（折叠/展开共用）：民大绿调卡片 */
+/* 折叠标题行：一行两端对齐（插件依赖的 UnoCSS flex 类不生效，显式补齐） */
+.vp-nolebase-git-changelog-history-container > label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  line-height: 1.5;
+}
 .vp-nolebase-git-changelog-history-container {
   padding: 10px 16px;
   border-radius: 10px;

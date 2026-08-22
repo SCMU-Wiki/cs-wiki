@@ -1,5 +1,11 @@
 ---
 title: 学生组织
+prev:
+  text: 欢迎
+  link: /guide/welcome
+next:
+  text: 实验室
+  link: /guide/organizations/labs
 ---
 
 > 实验室、学生会、团委、青年志愿者协会，大学里最值得投入精力的地方，都在这里。

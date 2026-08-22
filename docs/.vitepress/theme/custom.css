@@ -10,9 +10,9 @@
   --vp-c-brand-3: #00603d;
   --vp-c-brand-soft: rgba(0, 114, 72, 0.14);
 
-  /* 首页 hero 区微调：SCMU CS Wiki 渐变色（深绿 → 亮绿，层次更明显） */
+  /* 首页 hero 区微调：SCMU CS Wiki 渐变（左民大绿 → 右院徽蓝，两种身份共存） */
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(120deg, #004a2a 0%, #007248 30%, #1f9e6c 65%, #46c493 100%);
+  --vp-home-hero-name-background: linear-gradient(120deg, #007248 0%, #1f9e6c 30%, #2b7fd4 65%, #4a9de0 100%);
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -55,7 +55,7 @@
     transform 0.25s;
 }
 
-/* 首页 hero 院标：白底圆形徽章，蓝绿隔离 */
+/* 首页 hero 院标：白底圆形徽章 + 绿色光晕 + 轻浮动 */
 .VPHomeHero .image-container {
   margin-bottom: 8px;
 }
@@ -64,21 +64,36 @@
   border-radius: 50%;
   background: #fff;
   border: 3px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
   padding: 6px;
 }
 
 .VPHomeHero .image-container img {
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
+  /* 绿色柔光：蓝院徽被绿光包裹，蓝绿和谐过渡 */
+  box-shadow:
+    0 0 0 6px rgba(0, 114, 72, 0.08),
+    0 0 28px rgba(0, 114, 72, 0.25),
+    0 6px 24px rgba(0, 0, 0, 0.12);
+  animation: hero-float 6s ease-in-out infinite;
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 @media (max-width: 640px) {
   .VPHomeHero .image-container img {
-    width: 96px;
-    height: 96px;
+    width: 110px;
+    height: 110px;
   }
 }
 .VPFeatures .item:hover .box {

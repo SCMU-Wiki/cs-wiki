@@ -1,5 +1,11 @@
 ---
 title: 入学必看
+prev:
+  text: 欢迎
+  link: /guide/welcome
+next:
+  text: 入学准备
+  link: /guide/admission/prepare
 ---
 
 > 入学第一关，把这篇看完，少踩一半坑。内容整理自学长"牢大"的攻略，持续更新中。

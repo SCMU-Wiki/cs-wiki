@@ -1,5 +1,11 @@
 ---
 title: 学业
+prev:
+  text: 欢迎
+  link: /guide/welcome
+next:
+  text: 绩点与综测
+  link: /guide/academic/gpa
 ---
 
 > 绩点和综测是大学生涯的两个核心评价指标。绩点主要衡量你的课程学习质量，综测是对德智体美劳全面发展的综合评价。

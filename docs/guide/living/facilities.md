@@ -4,9 +4,9 @@ title: 校园设施
 
 ## 学校地图
 
-![学校地图 1](/images/image5.jpeg)
+![学校地图 1](/images/image5.webp)
 
-![学校地图 2](/images/image6.jpeg)
+![学校地图 2](/images/image6.webp)
 
 注：如外出归来时间过晚，可从学校北二门进入校园。
 

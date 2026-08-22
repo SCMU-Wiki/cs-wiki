@@ -21,9 +21,9 @@ title: 其他事项
 
 ## 校历
 
-![校历 1](/images/image3.jpeg)
+![校历 1](/images/image3.webp)
 
-![校历 2](/images/image4.jpeg)
+![校历 2](/images/image4.webp)
 
 ## 数学开学考
 

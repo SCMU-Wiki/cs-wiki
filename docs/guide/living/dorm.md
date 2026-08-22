@@ -6,13 +6,13 @@ title: 住宿
 
 据已知情报，26 级均为 4 人寝，除非分班，后续应该不会换寝室。
 
-![寝室参考](/images/image7.jpeg)
+![寝室参考](/images/image7.webp)
 
 以下是寝室神秘人提供的图片，仅供参考：
 
-![寝室内部 1](/images/image2.jpeg)
+![寝室内部 1](/images/image2.webp)
 
-![寝室内部 2](/images/image1.jpeg)
+![寝室内部 2](/images/image1.webp)
 
 除个别特殊情况，一般为上床下桌。
 

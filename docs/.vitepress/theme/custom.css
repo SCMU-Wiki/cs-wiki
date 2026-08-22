@@ -74,6 +74,15 @@
   }
 }
 
+/* 小屏：确保院徽水平居中 */
+@media (max-width: 959px) {
+  .VPHomeHero .image-container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .VPHomeHero .image-container .image {
   border-radius: 50%;
   background: #fff;

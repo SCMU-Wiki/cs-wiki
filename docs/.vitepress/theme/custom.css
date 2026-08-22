@@ -77,9 +77,9 @@
 /* 窄屏（<960）：强制院徽水平居中 + 拉开间距
    原生的负 margin 会把院徽和文字挤在一起，这里覆盖为舒适间距 */
 @media (max-width: 959px) {
-  /* 整体下移：增大顶部留白，与导航栏文字隔开 */
-  .VPHomeHero {
-    padding-top: calc(var(--vp-nav-height, 0px) + 160px);
+  /* 整体下移：增大顶部留白，与导航栏文字隔开（VPHero 是真正的 hero 根元素） */
+  .VPHero {
+    padding-top: calc(var(--vp-nav-height, 0px) + 130px) !important;
   }
 
   .VPHomeHero .image {

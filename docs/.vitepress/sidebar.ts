@@ -7,7 +7,10 @@ export const sidebar: DefaultTheme.Sidebar = {
   '/guide/': [
     {
       text: '指南总览',
-      items: [{ text: '欢迎', link: '/guide/welcome' }],
+      items: [
+        { text: '欢迎', link: '/guide/welcome' },
+        { text: '快速导航', link: '/navigation' },
+      ],
     },
     {
       text: '入学必看',

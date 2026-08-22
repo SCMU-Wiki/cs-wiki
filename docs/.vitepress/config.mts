@@ -6,7 +6,7 @@ export default defineConfig({
   base: '/cs-wiki/',
   lang: 'zh-CN',
   title: 'SCMU CS Wiki',
-  description: '中南民族大学计算机学院新生指南，学生自发维护的校园百科',
+  description: '中南民族大学计算机学院指南，学生自发维护的校园百科',
   cleanUrls: true,
 
   markdown: {

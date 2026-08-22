@@ -1,16 +1,48 @@
 /* 首页 hero：背景、院徽、按钮 */
 
-/* 背景：顶部淡绿光晕，打破纯白 */
-.VPHomeHero {
-  background:
-    radial-gradient(ellipse 85% 60% at 50% 0%, rgba(0, 114, 72, 0.36), transparent 65%),
-    radial-gradient(ellipse 65% 45% at 85% 20%, rgba(43, 127, 212, 0.08), transparent 70%);
+/* hero logo 光晕：上交式（三色渐变 + 大模糊），换民大绿调 */
+:root {
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    rgba(0, 114, 72, 0.35) 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(10, 138, 90, 0.35) 70%
+  );
+  --vp-home-hero-image-filter: blur(44px);
 }
 
-/* 宽屏（≥960）：左右布局 + 院徽位移调整 */
+.dark:root {
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    rgba(0, 114, 72, 0.25) 30%,
+    rgba(10, 138, 90, 0.25) 50%,
+    rgba(90, 200, 150, 0.25) 75%
+  );
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+}
+
+/* 背景：顶部淡绿光晕，调淡让位给 logo 光斑（上交式干净） */
+.VPHomeHero {
+  background:
+    radial-gradient(ellipse 85% 60% at 50% 0%, rgba(0, 114, 72, 0.12), transparent 65%),
+    radial-gradient(ellipse 65% 45% at 85% 20%, rgba(10, 138, 90, 0.05), transparent 70%);
+}
+
+/* 宽屏（≥960）：左右布局，logo 上移 50px 对齐视觉重心 */
 @media (min-width: 960px) {
   .VPHomeHero .image-container {
-    transform: translate(-60px, -130px);
+    transform: translateY(-50px);
   }
 }
 
@@ -52,17 +84,32 @@
   }
 }
 
-/* 不需要渐变圆背景：logo 透明背景直接展示 */
+/* logo 背部：柔和民大绿光斑（上交式：变量渐变 + blur，背景不手写） */
 .VPHomeHero .image-bg {
-  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  /* 中心略下移，贴合 logo 视觉重心（塔高基座低） */
+  transform: translate(-50%, -50%) translateY(24px);
+  border-radius: 50%;
+  z-index: 0;
 }
 
-/* logo：完整显示（不圆形裁切），透明背景 */
+/* logo：完整显示（不圆形裁切），透明背景。
+   注意：不写 position/transform/animation，
+   保留 VitePress 默认的 absolute + translate(-50%,-50%) 居中 */
 .VPHomeHero .image-container img {
+  z-index: 1;
   width: 210px;
   height: 210px;
   object-fit: contain;
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.18));
+}
+
+/* 浮动动画：作用于外层 .image，不影响 img 居中（logo + 光斑整体浮动） */
+.VPHomeHero .image {
   animation: hero-float 6s ease-in-out infinite;
 }
 
@@ -72,7 +119,7 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
   }
 }
 

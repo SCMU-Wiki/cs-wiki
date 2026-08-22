@@ -13,9 +13,9 @@
   --vp-button-brand-hover-bg: #0a8a5a;
   --vp-button-brand-active-bg: #00603d;
 
-  /* 首页 hero 标题渐变：左民大绿 → 右院徽蓝 */
+  /* 首页 hero 标题渐变：纯民大绿（深→浅），去掉蓝色 */
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient(120deg, #007248 0%, #1f9e6c 30%, #2b7fd4 65%, #4a9de0 100%);
+  --vp-home-hero-name-background: linear-gradient(120deg, #007248 0%, #1f9e6c 35%, #3dbb8a 70%, #6fcf9f 100%);
   -webkit-background-clip: text;
   background-clip: text;
 }

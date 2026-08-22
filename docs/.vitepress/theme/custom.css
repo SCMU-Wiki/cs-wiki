@@ -76,8 +76,9 @@
   font-weight: 500;
 }
 
-/* commit 时间线容器：浅绿底 + 圆角 + 细边框 */
-.vp-nolebase-git-changelog-history-list {
+/* commit 时间线列表（展开时才显示）：浅绿底 + 圆角 + 细边框
+   折叠时外层只有一行标题，保持紧凑 */
+.vp-nolebase-git-changelog-history-container > div[class*='grid'] {
   padding: 14px 18px;
   border-radius: 12px;
   background: rgba(0, 114, 72, 0.045);

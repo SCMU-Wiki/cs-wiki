@@ -1,5 +1,12 @@
 /* 首页 hero：背景、院徽、按钮 */
 
+/* 移动端首页：顶部导航栏透明（消除白条闪烁） */
+@media (max-width: 959px) {
+  .VPHome .VPNavBar {
+    background-color: transparent !important;
+  }
+}
+
 /* hero logo 光晕：上交式（三色渐变 + 大模糊），换民大绿调 */
 :root {
   --vp-home-hero-image-background-image: linear-gradient(

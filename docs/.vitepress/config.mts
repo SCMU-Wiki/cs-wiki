@@ -33,11 +33,11 @@ export default defineConfig({
     // og:image 用白底 png（QQ 等平台不支持 webp，且透明底会显示黑块）
     ['meta', { property: 'og:image', content: 'https://scmu-wiki.github.io/cs-wiki/images/logo-v2-white.png' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
-    // 关键样式内联：移动端首页导航透明（消除 CSS 加载前的白条闪烁）
+    // 关键样式内联：移动端首页导航透明 + 顶部淡绿渐变（消除 CSS 加载前的白条）
     [
       'style',
       {},
-      '@media (max-width: 959px){.VPHome .VPNavBar{background-color:transparent!important}}',
+      '@media (max-width: 959px){.VPHome .VPNavBar{background-color:transparent!important}.VPHome{background:radial-gradient(ellipse 100% 60% at 50% 0%,rgba(0,114,72,.28),transparent 65%)}}',
     ],
   ],
 

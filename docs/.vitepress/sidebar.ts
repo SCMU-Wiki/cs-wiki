@@ -1,70 +1,82 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import type { DefaultTheme } from 'vitepress'
 
 /**
- * 侧边栏配置（仿上交：按板块分组，每个主题独立页面）
+ * 侧边栏自动生成（对齐上交：扫描目录 + frontmatter 的 title/order）
+ * - 每个板块目录（admission/living/academic/organizations）的 index.md 作为分组标题
+ * - 子页面按 frontmatter order 排序（无 order 排最后）
+ * - 贡献者只需写 Markdown + title/order，无需改配置
  */
-const guide: DefaultTheme.SidebarItem[] = [
-  {
-    text: '指南总览',
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const guideDir = path.join(__dirname, '../guide')
+
+interface PageMeta {
+  title?: string
+  order?: number
+}
+
+/** 解析文件开头的 frontmatter（仅取 title / order） */
+function parseFrontmatter(filePath: string): PageMeta {
+  const content = fs.readFileSync(filePath, 'utf8')
+  const m = content.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+  if (!m) return {}
+  const fm = m[1]
+  const title = fm.match(/^title:\s*(.+?)\s*$/m)?.[1]?.trim()
+  const order = fm.match(/^order:\s*(\d+)\s*$/m)?.[1]
+  return { title, order: order ? parseInt(order, 10) : undefined }
+}
+
+/** 扫描一个板块目录，生成侧边栏分组（无 index.md 则跳过） */
+function buildGroup(dirName: string): DefaultTheme.SidebarItem | null {
+  const dir = path.join(guideDir, dirName)
+  const indexFile = path.join(dir, 'index.md')
+  if (!fs.existsSync(indexFile)) return null
+
+  const indexFm = parseFrontmatter(indexFile)
+  if (!indexFm.title) return null
+
+  const pages: { text: string; link: string; order?: number }[] = []
+  for (const f of fs.readdirSync(dir)) {
+    if (!f.endsWith('.md') || f === 'index.md') continue
+    const fm = parseFrontmatter(path.join(dir, f))
+    if (!fm.title) continue
+    pages.push({
+      text: fm.title,
+      link: `/guide/${dirName}/${f.replace(/\.md$/, '')}`,
+      order: fm.order,
+    })
+  }
+
+  // 按 order 升序，无 order 的排最后（保持稳定顺序）
+  pages.sort((a, b) => (a.order ?? Number.MAX_SAFE_INTEGER) - (b.order ?? Number.MAX_SAFE_INTEGER))
+
+  return {
+    text: indexFm.title,
+    link: `/guide/${dirName}/`,
     collapsed: false,
-    items: [
-      { text: '欢迎', link: '/guide/welcome' },
-      { text: '站点导航', link: '/navigation' },
-    ],
-  },
-  {
-    text: '入学必看',
-    link: '/guide/admission/',
-    collapsed: false,
-    items: [
-      { text: '入学准备', link: '/guide/admission/prepare' },
-      { text: '军训', link: '/guide/admission/military' },
-      { text: '如何来到学校', link: '/guide/admission/arrival' },
-      { text: '谨防诈骗', link: '/guide/admission/anti-scam' },
-      { text: '班委', link: '/guide/admission/class-committee' },
-      { text: '其他事项', link: '/guide/admission/misc' },
-    ],
-  },
-  {
-    text: '生活指南',
-    link: '/guide/living/',
-    collapsed: false,
-    items: [
-      { text: '校园设施', link: '/guide/living/facilities' },
-      { text: '住宿', link: '/guide/living/dorm' },
-      { text: '校园卡', link: '/guide/living/campus-card' },
-      { text: '校内食堂', link: '/guide/living/canteens' },
-      { text: '校外觅食', link: '/guide/living/food-around' },
-      { text: '交通', link: '/guide/living/transport' },
-      { text: '校园活动', link: '/guide/living/activities' },
-    ],
-  },
-  {
-    text: '学业规划',
-    link: '/guide/academic/',
-    collapsed: false,
-    items: [
-      { text: '绩点与综测', link: '/guide/academic/gpa' },
-      { text: '选课', link: '/guide/academic/courses' },
-      { text: '奖助学金', link: '/guide/academic/scholarship' },
-      { text: '其他学分', link: '/guide/academic/credits' },
-      { text: '挂科与保研', link: '/guide/academic/fail-postgraduate' },
-      { text: '体测', link: '/guide/academic/pe' },
-      { text: '四六级及英语免修', link: '/guide/academic/cet' },
-    ],
-  },
-  {
-    text: '学生组织',
-    link: '/guide/organizations/',
-    collapsed: false,
-    items: [
-      { text: '实验室', link: '/guide/organizations/labs' },
-      { text: '学生会与团委', link: '/guide/organizations/student-union' },
-      { text: '青年志愿者协会', link: '/guide/organizations/volunteers' },
-      { text: '其他组织与社团', link: '/guide/organizations/clubs' },
-    ],
-  },
-]
+    items: pages.map(({ text, link }) => ({ text, link })),
+  }
+}
+
+/** 指南总览组（欢迎 + 站点导航）：两处位置特殊，保留手动定义 */
+const overviewGroup: DefaultTheme.SidebarItem = {
+  text: '指南总览',
+  collapsed: false,
+  items: [
+    { text: '欢迎', link: '/guide/welcome' },
+    { text: '站点导航', link: '/navigation' },
+  ],
+}
+
+const guide: DefaultTheme.SidebarItem[] = [overviewGroup]
+
+for (const dirName of ['admission', 'living', 'academic', 'organizations']) {
+  const group = buildGroup(dirName)
+  if (group) guide.push(group)
+}
 
 // '/guide/' 与 '/navigation' 共用同一份侧边栏（导航页左上角菜单可用）
 export const sidebar: DefaultTheme.Sidebar = {

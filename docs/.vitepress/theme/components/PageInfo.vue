@@ -4,8 +4,13 @@ import { computed, nextTick, onMounted, ref } from 'vue'
 
 const { page } = useData()
 
-// 作者：统一匿名（保护贡献者隐私）
-const author = '匿名'
+// 作者：读取 frontmatter.author（昵称列表），未署名时兜底匿名
+const author = computed(() => {
+  const a = page.value.frontmatter.author
+  if (!a) return '匿名'
+  if (Array.isArray(a)) return a.join('、')
+  return String(a)
+})
 
 // 最后更新时间
 const lastUpdated = computed(() => {

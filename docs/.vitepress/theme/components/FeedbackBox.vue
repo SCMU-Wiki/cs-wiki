@@ -41,9 +41,10 @@ const feedbackUrl = 'https://github.com/SCMU-Wiki/cs-wiki/issues'
 
 .feedback-body {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  /* 手机端与电脑端一致：logo 左侧上下居中，文字在右（不换行） */
+  flex-wrap: nowrap;
   align-items: center;
+  gap: 12px;
   padding: 14px 18px;
   border-radius: 12px;
   background: rgba(0, 114, 72, 0.09);

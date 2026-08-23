@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { withBase } from 'vitepress'
-// 问卷链接就绪后替换为腾讯问卷地址
-const feedbackUrl = 'https://github.com/SCMU-Wiki/cs-wiki/issues'
+// 反馈问卷：零门槛，可传文档（docx/md/txt）
+const feedbackUrl = 'https://docs.qq.com/form/page/DWHVqUWp0cktjSWVu'
 </script>
 
 <template>

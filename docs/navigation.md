@@ -5,13 +5,24 @@ title: 站点导航
 
 SCMU CS Wiki 是中南民族大学计算机学院（人工智能学院）的新生指南，由学生自发维护。这个站怎么逛，看这里。
 
+## 常用快捷入口
+
+- [谨防诈骗](/guide/admission/anti-scam) —— 开学第一课，先看这个
+- [军训](/guide/admission/military) —— 开学第二天就开练
+- [分级教学（数学/英语分班）](/guide/admission/misc) —— 开学不久就要考试分班
+- [校历](https://mp.weixin.qq.com/s/j1PG9xDfXAqXJbf332_Z_A) —— 2026-2027 学年安排
+- [奖助学金](/guide/academic/scholarship) —— 钱的事，提前了解
+- [选课](/guide/academic/courses) —— 新系统很丝滑
+- [校园卡](/guide/living/campus-card) —— 吃饭洗澡开门全靠它
+- [校内食堂](/guide/living/canteens) —— 民以食为天
+
 ## 四个板块
 
 | 板块 | 内容 | 适合什么时候看 |
 |---|---|---|
-| [入学必看](/guide/admission/) | 入学准备、军训、交通路线、防诈骗、班委、学费 | 开学前和开学第一周 |
-| [生活指南](/guide/living/) | 宿舍、食堂、校园卡、快递、交通、校园活动 | 住进学校后慢慢看 |
-| [学业](/guide/academic/) | 绩点、综测、选课、奖学金、保研、体测 | 想搞懂"大学怎么学"的时候 |
+| [入学必看](/guide/admission/) | 入学准备、军训、到校交通、防诈骗、班委、校历、分级教学 | 开学前和开学第一周 |
+| [生活指南](/guide/living/) | 宿舍、食堂、校园卡、快递、图书馆、交通、校园活动 | 住进学校后慢慢看 |
+| [学业](/guide/academic/) | 绩点综测、选课、奖助学金、保研、体测、四六级 | 想搞懂"大学怎么学"的时候 |
 | [学生组织](/guide/organizations/) | 实验室、学生会、团委、青年志愿者协会 | 想加入组织/社团之前 |
 
 ## 建议阅读顺序

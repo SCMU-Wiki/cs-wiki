@@ -16,6 +16,10 @@ NOTES.md
 Thumbs.db
 *.log
 
+# Obsidian vault 配置（个人设置，不入库）
+.obsidian/
+.trash/
+
 # 本地环境
 .vscode/
 .idea/

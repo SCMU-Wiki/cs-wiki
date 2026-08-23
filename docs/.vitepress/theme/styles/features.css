@@ -1,21 +1,35 @@
-/* 首页 feature 卡片：外观补齐 + hover 品牌色响应 */
+/* 首页 feature 卡片：hover 发光放大（作用于外层 VPFeature，避免底边线残留） */
 
-.VPFeatures .item .box {
-  border-radius: 12px;
+.VPFeatures .item .VPFeature {
+  position: relative;
   border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
   background-color: var(--vp-c-bg-soft);
   transition:
-    border-color 0.25s,
-    background-color 0.25s,
-    box-shadow 0.25s,
-    transform 0.25s;
+    border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.VPFeatures .item:hover .box {
-  border-color: var(--vp-c-brand-1);
-  background-color: var(--vp-c-brand-soft);
+.VPFeatures .item:hover .VPFeature {
+  /* 浮动时不显示边框（只留光晕 + 渐变背景） */
+  border-color: transparent;
+  background: linear-gradient(145deg, var(--vp-c-brand-soft), var(--vp-c-bg-soft) 65%);
+  box-shadow: 0 0 34px rgba(0, 114, 72, 0.18);
+  transform: scale(1.02);
 }
 
-.VPFeatures .item:hover .box .title {
+.VPFeatures .item:hover .VPFeature .title {
   color: var(--vp-c-brand-1);
+}
+
+/* 图标区：hover 放大 + 上浮 + 倾斜 */
+.VPFeatures .item .box .icon {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.VPFeatures .item:hover .box .icon {
+  transform: translateY(-4px) scale(1.25) rotate(-15deg);
 }

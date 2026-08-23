@@ -130,7 +130,7 @@
   }
 }
 
-/* “开始阅读”按钮：加大 + 民大绿 */
+/* “开始阅读”按钮：加大 + 民大绿 + hover 浮动 */
 .VPHomeHero .VPButton {
   font-size: 18px;
   padding: 16px 40px;
@@ -140,8 +140,14 @@
 .VPHomeHero .VPButton.brand {
   background-color: #007248 !important;
   border-color: #007248 !important;
+  transition:
+    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .VPHomeHero .VPButton.brand:hover {
   background-color: #0a8a5a !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 114, 72, 0.3);
 }

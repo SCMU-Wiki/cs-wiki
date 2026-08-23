@@ -9,6 +9,11 @@ export default defineConfig({
   description: '中南民族大学计算机学院指南，学生自发维护的校园百科',
   cleanUrls: true,
 
+  // 不加载 Google Fonts（国内访问慢/被墙），用系统字体，秒开
+  useWebFonts: false,
+  // 关闭 Web 字体：中文站点用系统字体即可，省 8 个 woff2（约 480KB）下载与渲染阻塞
+  useWebFonts: false,
+
   markdown: {
     image: {
       // 图片懒加载：滚动到才加载，首屏秒开（上交页面无图所以快，我们靠这个追平）
@@ -29,6 +34,18 @@ export default defineConfig({
     ['meta', { property: 'og:image', content: 'https://scmu-wiki.github.io/cs-wiki/images/logo-v2-white.png' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
   ],
+
+  // og/twitter 标签提前到 head 前段（部分抓取器如 QQ 只读 head 前 1KB）
+  // 注意：transformHead 是 merge 追加语义，无法重排，用 transformHtml 直接操作 HTML
+  transformHtml: (code) => {
+    if (!code.includes('og:title')) return code
+    const ogRe =
+      /<meta property="og:[^"]*"[^>]*>|<meta name="twitter:[^"]*"[^>]*>|<link rel="icon"[^>]*>/g
+    const tags = code.match(ogRe)
+    if (!tags || !tags.length) return code
+    const newCode = code.replace(ogRe, '')
+    return newCode.replace('</title>', '</title>\n' + tags.join('\n'))
+  },
 
   vite: {
     ssr: {

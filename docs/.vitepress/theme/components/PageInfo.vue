@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useData, onContentUpdated } from 'vitepress'
-import { computed, nextTick, onMounted, ref } from 'vue'
+import { useData } from 'vitepress'
+import { computed } from 'vue'
 
 const { page } = useData()
 
@@ -12,7 +12,7 @@ const author = computed(() => {
   return String(a)
 })
 
-// 最后更新时间
+// 最后更新时间（构建时静态数据，秒显）
 const lastUpdated = computed(() => {
   const ts = page.value.lastUpdated
   if (!ts) return ''
@@ -21,34 +21,6 @@ const lastUpdated = computed(() => {
     timeStyle: 'short',
   }).format(new Date(ts))
 })
-
-// 字数和阅读时间（读取页面渲染后的文本统计）
-const wordCount = ref(0)
-const readTime = ref('')
-
-// 统计逻辑提取为函数，路由切换后重新计算
-// nextTick 保证 DOM 已更新为当前页内容；若内容未渲染则稍后重试（移动端首屏时序更紧）
-const calcStats = () => {
-  nextTick(() => {
-    const doc = document.querySelector('.vp-doc')
-    if (!doc) {
-      setTimeout(calcStats, 150)
-      return
-    }
-    const text = (doc.textContent || '').replace(/\s+/g, '')
-    // 中文字符 + 英文单词混合估算
-    const chinese = (text.match(/[\u4e00-\u9fa5]/g) || []).length
-    const words = (text.match(/[a-zA-Z0-9]+/g) || []).length
-    wordCount.value = chinese + words
-    // 阅读速度按每分钟 400 字估算
-    const minutes = Math.max(1, Math.round((chinese + words) / 400))
-    readTime.value = `${minutes} 分钟`
-  })
-}
-
-onMounted(calcStats)
-// SPA 路由切换后内容更新时重新统计
-onContentUpdated(calcStats)
 </script>
 
 <template>
@@ -59,12 +31,6 @@ onContentUpdated(calcStats)
       </span>
       <span v-if="lastUpdated" class="pi-item">
         <span class="pi-icon">🕒</span> 最后更新：{{ lastUpdated }}
-      </span>
-      <span v-if="wordCount" class="pi-item">
-        <span class="pi-icon">📝</span> 字数：{{ wordCount }}
-      </span>
-      <span v-if="readTime" class="pi-item">
-        <span class="pi-icon">⏱️</span> 预计阅读时间：{{ readTime }}
       </span>
     </div>
   </div>

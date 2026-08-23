@@ -9,12 +9,12 @@ SCMU CS Wiki 是中南民族大学计算机学院（人工智能学院）的新�
 
 - [谨防诈骗](/guide/admission/anti-scam) —— 开学第一课，先看这个
 - [军训](/guide/admission/military) —— 开学第二天就开练
-- [分级教学（数学/英语分班）](/guide/admission/misc) —— 开学不久就要考试分班
-- [校历](https://mp.weixin.qq.com/s/j1PG9xDfXAqXJbf332_Z_A) —— 2026-2027 学年安排
-- [奖助学金](/guide/academic/scholarship) —— 钱的事，提前了解
-- [选课](/guide/academic/courses) —— 新系统很丝滑
+- [校内食堂](/guide/living/canteens) —— 民以食为天，绑定微信和支付宝
+- [快递](/guide/living/facilities#快递) —— 收货地址记得加上收货密令
 - [校园卡](/guide/living/campus-card) —— 吃饭洗澡开门全靠它
-- [校内食堂](/guide/living/canteens) —— 民以食为天
+- [分级教学（数学/英语分班）](/guide/admission/misc) —— 仅数学需要考试分班
+- [校历](https://mp.weixin.qq.com/s/j1PG9xDfXAqXJbf332_Z_A) —— 2026-2027 学年安排
+- [选课](/guide/academic/courses) —— 新系统很丝滑
 
 ## 四个板块
 

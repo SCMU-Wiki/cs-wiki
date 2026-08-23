@@ -6,6 +6,7 @@ import type { DefaultTheme } from 'vitepress'
 const guide: DefaultTheme.SidebarItem[] = [
   {
     text: '指南总览',
+    collapsed: false,
     items: [
       { text: '欢迎', link: '/guide/welcome' },
       { text: '快速导航', link: '/navigation' },
@@ -13,6 +14,7 @@ const guide: DefaultTheme.SidebarItem[] = [
   },
   {
     text: '入学必看',
+    collapsed: false,
     items: [
       { text: '入学准备', link: '/guide/admission/prepare' },
       { text: '军训', link: '/guide/admission/military' },
@@ -24,6 +26,7 @@ const guide: DefaultTheme.SidebarItem[] = [
   },
   {
     text: '生活指南',
+    collapsed: false,
     items: [
       { text: '校园设施', link: '/guide/living/facilities' },
       { text: '住宿', link: '/guide/living/dorm' },
@@ -36,6 +39,7 @@ const guide: DefaultTheme.SidebarItem[] = [
   },
   {
     text: '学业',
+    collapsed: false,
     items: [
       { text: '绩点与综测', link: '/guide/academic/gpa' },
       { text: '选课', link: '/guide/academic/courses' },
@@ -48,6 +52,7 @@ const guide: DefaultTheme.SidebarItem[] = [
   },
   {
     text: '学生组织',
+    collapsed: false,
     items: [
       { text: '实验室', link: '/guide/organizations/labs' },
       { text: '学生会与团委', link: '/guide/organizations/student-union' },

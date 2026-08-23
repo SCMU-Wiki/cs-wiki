@@ -62,3 +62,11 @@
   font-size: 13px;
   line-height: 1.6;
 }
+
+/* KaTeX 公式：窄屏超宽时横向滚动，不撑破布局 */
+.katex-block,
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 0;
+}

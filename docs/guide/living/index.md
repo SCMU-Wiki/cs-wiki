@@ -1,5 +1,5 @@
 ---
-title: 生活指南
+title: 生活指南
 prev:
   text: 欢迎
   link: /guide/welcome

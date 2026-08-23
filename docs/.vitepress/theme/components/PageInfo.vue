@@ -47,28 +47,33 @@ onContentUpdated(calcStats)
 </script>
 
 <template>
-  <div class="page-info">
-    <span class="pi-item">
-      <span class="pi-icon">👤</span> 作者：{{ author }}
-    </span>
-    <span v-if="lastUpdated" class="pi-item">
-      <span class="pi-icon">🕒</span> 最后更新：{{ lastUpdated }}
-    </span>
-    <span v-if="wordCount" class="pi-item">
-      <span class="pi-icon">📝</span> 字数：{{ wordCount }}
-    </span>
-    <span v-if="readTime" class="pi-item">
-      <span class="pi-icon">⏱️</span> 预计阅读时间：{{ readTime }}
-    </span>
+  <div class="page-info-wrap">
+    <div class="page-info">
+      <span class="pi-item">
+        <span class="pi-icon">👤</span> 作者：{{ author }}
+      </span>
+      <span v-if="lastUpdated" class="pi-item">
+        <span class="pi-icon">🕒</span> 最后更新：{{ lastUpdated }}
+      </span>
+      <span v-if="wordCount" class="pi-item">
+        <span class="pi-icon">📝</span> 字数：{{ wordCount }}
+      </span>
+      <span v-if="readTime" class="pi-item">
+        <span class="pi-icon">⏱️</span> 预计阅读时间：{{ readTime }}
+      </span>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.page-info-wrap {
+  margin: 8px 0 20px;
+}
+
 .page-info {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 20px;
-  margin: 8px 0 20px;
   padding: 10px 16px;
   border-radius: 8px;
   background: var(--vp-c-bg-soft);

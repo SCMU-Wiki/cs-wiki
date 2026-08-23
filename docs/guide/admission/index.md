@@ -1,5 +1,5 @@
 ---
-title: 入学必看
+title: 入学必看
 prev:
   text: 欢迎
   link: /guide/welcome

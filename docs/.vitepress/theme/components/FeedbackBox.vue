@@ -32,11 +32,8 @@ const feedbackUrl = 'https://github.com/SCMU-Wiki/cs-wiki/issues'
 }
 
 .feedback-text {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2px 8px;
-  align-items: baseline;
   min-width: 0;
+  line-height: 1.6;
 }
 
 .feedback-body {

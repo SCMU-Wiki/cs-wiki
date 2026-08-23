@@ -9,7 +9,7 @@ const guide: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       { text: '欢迎', link: '/guide/welcome' },
-      { text: '快速导航', link: '/navigation' },
+      { text: '站点导航', link: '/navigation' },
     ],
   },
   {

@@ -1,4 +1,6 @@
 import { defineConfig } from 'vitepress'
+import fs from 'node:fs'
+import path from 'node:path'
 import { sidebar } from './sidebar'
 import { GitChangelog } from '@nolebase/vitepress-plugin-git-changelog/vite'
 
@@ -8,6 +10,36 @@ export default defineConfig({
   title: 'SCMU CS Wiki',
   description: '中南民族大学计算机学院指南，学生自发维护的校园百科',
   cleanUrls: true,
+
+  // 构建时静态计算每页字数/阅读时间（注入 pageData.stats，运行时秒显）
+  transformPageData: (pageData) => {
+    const filePath = (pageData as { filePath?: string }).filePath
+    let total = 0
+    if (filePath) {
+      const abs = path.isAbsolute(filePath)
+        ? filePath
+        : path.resolve(process.cwd(), 'docs', filePath)
+      if (fs.existsSync(abs)) {
+        const src = fs.readFileSync(abs, 'utf8')
+        // 去 frontmatter、代码块、图片、链接语法、HTML、markdown 标记，估算正文
+        const text = src
+          .replace(/^---[\s\S]*?---\s*/, '')
+          .replace(/```[\s\S]*?```/g, ' ')
+          .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+          .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+          .replace(/<[^>]+>/g, ' ')
+          .replace(/[#>*_`~|:-]/g, ' ')
+          .replace(/\s+/g, '')
+        const chinese = (text.match(/[\u4e00-\u9fa5]/g) || []).length
+        const words = (text.match(/[a-zA-Z0-9]+/g) || []).length
+        total = chinese + words
+      }
+    }
+    ;(pageData as unknown as { stats?: { words: number; minutes: number } }).stats = {
+      words: total,
+      minutes: Math.max(1, Math.round(total / 400)),
+    }
+  },
 
   // 不加载 Google Fonts（国内访问慢/被墙），用系统字体，秒开
   useWebFonts: false,

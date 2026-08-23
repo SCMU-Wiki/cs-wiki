@@ -21,6 +21,9 @@ const lastUpdated = computed(() => {
     timeStyle: 'short',
   }).format(new Date(ts))
 })
+
+// 字数与阅读时间：构建时由 transformPageData 静态计算（无运行时统计延迟）
+const stats = computed(() => (page.value as { stats?: { words: number; minutes: number } }).stats)
 </script>
 
 <template>
@@ -31,6 +34,12 @@ const lastUpdated = computed(() => {
       </span>
       <span v-if="lastUpdated" class="pi-item">
         <span class="pi-icon">🕒</span> 最后更新：{{ lastUpdated }}
+      </span>
+      <span v-if="stats?.words" class="pi-item">
+        <span class="pi-icon">📝</span> 字数：{{ stats.words }}
+      </span>
+      <span v-if="stats?.minutes" class="pi-item">
+        <span class="pi-icon">⏱️</span> 预计阅读时间：{{ stats.minutes }} 分钟
       </span>
     </div>
   </div>

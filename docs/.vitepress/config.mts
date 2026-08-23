@@ -25,8 +25,8 @@ export default defineConfig({
     ['meta', { property: 'og:title', content: 'SCMU CS Wiki - 中南民族大学计算机学院新生指南' }],
     ['meta', { property: 'og:description', content: '学生自发维护的校园百科，涵盖入学必看、生活指南、学业规划、学生组织四大板块。' }],
     ['meta', { property: 'og:url', content: 'https://scmu-wiki.github.io/cs-wiki/' }],
-    // og:image 用 png（QQ 等平台的卡片抓取器不支持 webp）
-    ['meta', { property: 'og:image', content: 'https://scmu-wiki.github.io/cs-wiki/images/logo-v2.png' }],
+    // og:image 用白底 png（QQ 等平台不支持 webp，且透明底会显示黑块）
+    ['meta', { property: 'og:image', content: 'https://scmu-wiki.github.io/cs-wiki/images/logo-v2-white.png' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
   ],
 

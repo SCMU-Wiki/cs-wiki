@@ -59,7 +59,15 @@ const Bridge = defineComponent({
         null,
         {
           'doc-before': () =>
-            h('div', null, [h(PageInfo), h(NolebaseHighlightTargetedHeading)]),
+            h('div', null, [
+              h(
+                'div',
+                { class: 'trial-notice' },
+                'SCMU CS Wiki 目前处于试运行阶段，内容可能不准确或存在错误，请仔细甄别。'
+              ),
+              h(PageInfo),
+              h(NolebaseHighlightTargetedHeading),
+            ]),
           'doc-after': () =>
             h('div', { class: 'vp-doc' }, [h(FeedbackBox), h(NolebaseGitChangelog)]),
           // 阅读增强（含聚光灯）：导航栏 + 移动端菜单

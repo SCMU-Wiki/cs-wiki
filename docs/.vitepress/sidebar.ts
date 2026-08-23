@@ -14,6 +14,7 @@ const guide: DefaultTheme.SidebarItem[] = [
   },
   {
     text: '入学必看',
+    link: '/guide/admission/',
     collapsed: false,
     items: [
       { text: '入学准备', link: '/guide/admission/prepare' },
@@ -26,6 +27,7 @@ const guide: DefaultTheme.SidebarItem[] = [
   },
   {
     text: '生活指南',
+    link: '/guide/living/',
     collapsed: false,
     items: [
       { text: '校园设施', link: '/guide/living/facilities' },
@@ -39,6 +41,7 @@ const guide: DefaultTheme.SidebarItem[] = [
   },
   {
     text: '学业',
+    link: '/guide/academic/',
     collapsed: false,
     items: [
       { text: '绩点与综测', link: '/guide/academic/gpa' },
@@ -52,6 +55,7 @@ const guide: DefaultTheme.SidebarItem[] = [
   },
   {
     text: '学生组织',
+    link: '/guide/organizations/',
     collapsed: false,
     items: [
       { text: '实验室', link: '/guide/organizations/labs' },

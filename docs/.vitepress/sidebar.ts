@@ -40,7 +40,7 @@ export const sidebar: DefaultTheme.Sidebar = {
       items: [
         { text: '绩点与综测', link: '/guide/academic/gpa' },
         { text: '选课', link: '/guide/academic/courses' },
-        { text: '奖学金', link: '/guide/academic/scholarship' },
+        { text: '奖助学金', link: '/guide/academic/scholarship' },
         { text: '其他学分', link: '/guide/academic/credits' },
         { text: '挂科与保研', link: '/guide/academic/fail-postgraduate' },
         { text: '体测', link: '/guide/academic/pe' },

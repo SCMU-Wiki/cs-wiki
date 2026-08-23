@@ -1,5 +1,6 @@
 ---
-title: 生活指南
+title: 生活指南
+
 prev:
   text: 欢迎
   link: /guide/welcome
@@ -7,6 +8,8 @@ next:
   text: 校园设施
   link: /guide/living/facilities
 ---
+
+# 生活指南
 
 > 为便于记忆，所有位置坐标均从北向南说明。
 

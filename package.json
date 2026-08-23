@@ -13,10 +13,12 @@
     "vitepress": "^1.6.4"
   },
   "dependencies": {
+    "@mdit/plugin-katex": "^1.1.0",
     "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.18.2",
     "@nolebase/vitepress-plugin-git-changelog": "^2.18.2",
     "@nolebase/vitepress-plugin-highlight-targeted-heading": "^2.18.2",
     "imagetracerjs": "^1.2.6",
+    "katex": "^0.18.4",
     "sharp": "^0.35.3"
   },
   "allowScripts": {

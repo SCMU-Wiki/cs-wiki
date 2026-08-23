@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import fs from 'node:fs'
 import path from 'node:path'
+import { katex } from '@mdit/plugin-katex'
 import { sidebar } from './sidebar'
 import { GitChangelog } from '@nolebase/vitepress-plugin-git-changelog/vite'
 
@@ -47,6 +48,10 @@ export default defineConfig({
   useWebFonts: false,
 
   markdown: {
+    // LaTeX 数学公式（KaTeX，构建时渲染为静态 HTML）
+    config: (md) => {
+      md.use(katex)
+    },
     image: {
       // 图片懒加载：滚动到才加载，首屏秒开（上交页面无图所以快，我们靠这个追平）
       lazyLoading: true,
@@ -56,6 +61,8 @@ export default defineConfig({
   head: [
     // 注意：head 里的路径不会自动加 base，这里写死 /cs-wiki/ 前缀
     ['link', { rel: 'icon', type: 'image/png', href: '/cs-wiki/images/favicon.png' }],
+    // KaTeX 数学公式样式（本地资源，避免 CDN 加载慢）
+    ['link', { rel: 'stylesheet', href: '/cs-wiki/katex/katex.min.css' }],
     // SEO / 分享预览（QQ、微信、Twitter 等平台抓取 og 标签生成卡片）
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'SCMU CS Wiki' }],

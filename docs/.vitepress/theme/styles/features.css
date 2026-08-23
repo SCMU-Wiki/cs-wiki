@@ -33,3 +33,14 @@
 .VPFeatures .item:hover .box .icon {
   transform: translateY(-4px) scale(1.25) rotate(-15deg);
 }
+
+/* 媒体端（<960）：取消浮动位移和图标动效，只保留光晕（触屏 hover 闪烁+卡顿） */
+@media (max-width: 959px) {
+  .VPFeatures .item:hover .VPFeature {
+    transform: none;
+  }
+
+  .VPFeatures .item:hover .box .icon {
+    transform: none;
+  }
+}

@@ -63,7 +63,7 @@ const Bridge = defineComponent({
               h(
                 'div',
                 { class: 'trial-notice' },
-                'SCMU CS Wiki 目前处于试运行阶段，内容可能不准确或存在错误，请仔细甄别。'
+                '⚠️ SCMU CS Wiki 目前处于试运行阶段，内容可能不准确或存在错误，请仔细甄别。'
               ),
               h(PageInfo),
               h(NolebaseHighlightTargetedHeading),

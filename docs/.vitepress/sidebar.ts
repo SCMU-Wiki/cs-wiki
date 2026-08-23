@@ -40,7 +40,7 @@ const guide: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
-    text: '学业',
+    text: '学业规划',
     link: '/guide/academic/',
     collapsed: false,
     items: [

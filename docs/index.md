@@ -16,13 +16,13 @@ hero:
 
 features:
   - title: 入学必看 📦
-    details: 入学准备、军训、交通路线、防诈骗指南、班委竞选、学费与校历
+    details: 入学准备、军训、到校交通、防诈骗、班委、校历、分级教学
     link: /guide/admission/
   - title: 生活指南 🏠
-    details: 宿舍、食堂、校园卡、校内校外交通、快递打印、校园活动
+    details: 宿舍、食堂、校园卡、快递、图书馆、交通、外卖
     link: /guide/living/
-  - title: 学业 📖
-    details: 绩点、综测、选课、奖学金、保研、体测、四六级
+  - title: 学业规划 📖
+    details: 绩点综测、选课、奖助学金、保研、体测、四六级
     link: /guide/academic/
   - title: 学生组织 🎭
     details: 实验室、学生会、团委、青年志愿者协会、社团

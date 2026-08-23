@@ -9,7 +9,7 @@ title: 欢迎
 
 ## 这里有什么
 
-四个板块：[入学必看](/guide/admission/) · [生活指南](/guide/living/) · [学业](/guide/academic/) · [学生组织](/guide/organizations/)，内容整理自学长"牢大"的新生攻略，正在陆续完善中。
+四个板块：[入学必看](/guide/admission/) · [生活指南](/guide/living/) · [学业规划](/guide/academic/) · [学生组织](/guide/organizations/)，内容整理自学长"牢大"的新生攻略，正在陆续完善中。
 
 ## 怎么逛
 

@@ -1,5 +1,6 @@
 ---
 title: 学业规划
+order: 18
 prev:
   text: 欢迎
   link: /guide/welcome

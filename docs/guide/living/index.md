@@ -1,5 +1,6 @@
 ---
 title: 生活指南
+order: 10
 
 prev:
   text: 欢迎

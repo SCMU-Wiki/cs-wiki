@@ -1,5 +1,6 @@
 ---
 title: 学生组织
+order: 26
 prev:
   text: 欢迎
   link: /guide/welcome

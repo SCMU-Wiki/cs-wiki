@@ -1,5 +1,6 @@
 ---
 title: 入学必看
+order: 3
 
 prev:
   text: 欢迎

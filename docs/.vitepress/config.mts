@@ -33,6 +33,12 @@ export default defineConfig({
     // og:image 用白底 png（QQ 等平台不支持 webp，且透明底会显示黑块）
     ['meta', { property: 'og:image', content: 'https://scmu-wiki.github.io/cs-wiki/images/logo-v2-white.png' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
+    // 关键样式内联：移动端首页导航透明（消除 CSS 加载前的白条闪烁）
+    [
+      'style',
+      {},
+      '@media (max-width: 959px){.VPHome .VPNavBar{background-color:transparent!important}}',
+    ],
   ],
 
   // og/twitter 标签提前到 head 前段（部分抓取器如 QQ 只读 head 前 1KB）

@@ -19,6 +19,14 @@ export default defineConfig({
   head: [
     // 注意：head 里的路径不会自动加 base，这里写死 /cs-wiki/ 前缀
     ['link', { rel: 'icon', type: 'image/png', href: '/cs-wiki/images/favicon.png' }],
+    // SEO / 分享预览（QQ、微信、Twitter 等平台抓取 og 标签生成卡片）
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:site_name', content: 'SCMU CS Wiki' }],
+    ['meta', { property: 'og:title', content: 'SCMU CS Wiki - 中南民族大学计算机学院新生指南' }],
+    ['meta', { property: 'og:description', content: '学生自发维护的校园百科，涵盖入学必看、生活指南、学业规划、学生组织四大板块。' }],
+    ['meta', { property: 'og:url', content: 'https://scmu-wiki.github.io/cs-wiki/' }],
+    ['meta', { property: 'og:image', content: 'https://scmu-wiki.github.io/cs-wiki/images/logo-v2.webp' }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
   ],
 
   vite: {

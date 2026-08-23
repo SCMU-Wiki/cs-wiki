@@ -78,8 +78,9 @@ for (const dirName of ['admission', 'living', 'academic', 'organizations']) {
   if (group) guide.push(group)
 }
 
-// '/wiki/' 与 '/navigation' 共用同一份侧边栏（导航页左上角菜单可用）
+// '/wiki/'、'/navigation'、'/contributing' 共用同一份侧边栏（菜单可用）
 export const sidebar: DefaultTheme.Sidebar = {
   '/wiki/': guide,
   '/navigation': guide,
+  '/contributing': guide,
 }

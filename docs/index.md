@@ -12,19 +12,19 @@ hero:
   actions:
     - theme: brand
       text: 开始阅读
-      link: /guide/welcome
+      link: /wiki/welcome
 
 features:
   - title: 入学必看 📦
     details: 入学准备、军训、到校交通、防诈骗、班委、校历、分级教学
-    link: /guide/admission/
+    link: /wiki/admission/
   - title: 生活指南 🏠
     details: 宿舍、食堂、校园卡、快递、图书馆、交通、外卖
-    link: /guide/living/
+    link: /wiki/living/
   - title: 学业规划 📖
     details: 绩点综测、选课、奖助学金、保研、体测、四六级
-    link: /guide/academic/
+    link: /wiki/academic/
   - title: 学生组织 🎭
     details: 实验室、学生会、团委、青年志愿者协会、社团
-    link: /guide/organizations/
+    link: /wiki/organizations/
 ---

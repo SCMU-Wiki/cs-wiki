@@ -11,7 +11,7 @@ import type { DefaultTheme } from 'vitepress'
  */
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const guideDir = path.join(__dirname, '../guide')
+const guideDir = path.join(__dirname, '../wiki')
 
 interface PageMeta {
   title?: string
@@ -45,7 +45,7 @@ function buildGroup(dirName: string): DefaultTheme.SidebarItem | null {
     if (!fm.title) continue
     pages.push({
       text: fm.title,
-      link: `/guide/${dirName}/${f.replace(/\.md$/, '')}`,
+      link: `/wiki/${dirName}/${f.replace(/\.md$/, '')}`,
       order: fm.order,
     })
   }
@@ -55,7 +55,7 @@ function buildGroup(dirName: string): DefaultTheme.SidebarItem | null {
 
   return {
     text: indexFm.title,
-    link: `/guide/${dirName}/`,
+    link: `/wiki/${dirName}/`,
     collapsed: false,
     items: pages.map(({ text, link }) => ({ text, link })),
   }
@@ -66,7 +66,7 @@ const overviewGroup: DefaultTheme.SidebarItem = {
   text: '指南总览',
   collapsed: false,
   items: [
-    { text: '欢迎', link: '/guide/welcome' },
+    { text: '欢迎', link: '/wiki/welcome' },
     { text: '站点导航', link: '/navigation' },
   ],
 }
@@ -78,8 +78,8 @@ for (const dirName of ['admission', 'living', 'academic', 'organizations']) {
   if (group) guide.push(group)
 }
 
-// '/guide/' 与 '/navigation' 共用同一份侧边栏（导航页左上角菜单可用）
+// '/wiki/' 与 '/navigation' 共用同一份侧边栏（导航页左上角菜单可用）
 export const sidebar: DefaultTheme.Sidebar = {
-  '/guide/': guide,
+  '/wiki/': guide,
   '/navigation': guide,
 }

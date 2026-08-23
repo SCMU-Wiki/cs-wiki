@@ -38,10 +38,11 @@ export default defineConfig({
             if (!path) return path
             // 内容拆分前的旧文件：板块内页面追溯到旧文件，显示从 init 到拆分的完整历史
             const legacyMap: [string, string][] = [
-              ['docs/guide/admission/', 'docs/guide/admission.md'],
-              ['docs/guide/living/', 'docs/guide/living.md'],
-              ['docs/guide/academic/', 'docs/guide/academic.md'],
-              ['docs/guide/organizations/', 'docs/guide/organizations.md'],
+              // 目录从 docs/guide/ 改为 docs/wiki/：匹配新路径，回溯到历史旧路径
+              ['docs/wiki/admission/', 'docs/guide/admission.md'],
+              ['docs/wiki/living/', 'docs/guide/living.md'],
+              ['docs/wiki/academic/', 'docs/guide/academic.md'],
+              ['docs/wiki/organizations/', 'docs/guide/organizations.md'],
             ]
             for (const [prefix, legacy] of legacyMap) {
               if (path.startsWith(prefix)) return legacy

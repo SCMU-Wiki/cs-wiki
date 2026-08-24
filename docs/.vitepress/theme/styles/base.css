@@ -60,6 +60,16 @@
   display: none;
 }
 
+/* 导航栏背景不过渡（首页透明↔内容页背景切换时瞬变，避免卡顿） */
+.VPNavBar {
+  transition: none !important;
+}
+
+/* 搜索按钮不做过渡（页面切换时导航栏重渲染，border 过渡导致卡顿） */
+.DocSearch-Button {
+  transition: none !important;
+}
+
 /* 全站试运行声明（红色提示条 + 黄色⚠图标，显示在所有内容页顶部） */
 .trial-notice {
   margin: 0 0 16px;
@@ -78,4 +88,11 @@
   overflow-x: auto;
   overflow-y: hidden;
   padding: 4px 0;
+}
+
+/* 引用块落款（以“—— ”结尾的署名段）：右下角对齐，灰色小字 */
+.vp-doc blockquote > p:last-child:not(:first-child) {
+  text-align: right;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
 }

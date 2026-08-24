@@ -23,6 +23,7 @@
 - [Nolebase 插件](https://github.com/nolebase)：页面历史、阅读增强、搜索高亮
 - GitHub Pages：免费静态托管
 - GitHub Actions：自动构建部署（push 即发布）
+- KaTeX：高性能数学公式渲染库
 
 ## 目录结构
 

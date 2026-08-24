@@ -51,6 +51,15 @@
   z-index: 9999;
 }
 
+/* 导航栏不参与页面过渡动画（路由切换时搜索栏/导航不卡顿，直接切换） */
+.VPNav {
+  view-transition-name: nav;
+}
+
+::view-transition-group(nav) {
+  display: none;
+}
+
 /* 全站试运行声明（红色提示条 + 黄色⚠图标，显示在所有内容页顶部） */
 .trial-notice {
   margin: 0 0 16px;

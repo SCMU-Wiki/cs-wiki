@@ -1,6 +1,6 @@
 ---
 title: 军训
-order: 5
+order: 2
 ---
 # 军训
 

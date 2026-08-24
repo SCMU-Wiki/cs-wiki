@@ -1,6 +1,6 @@
 ---
 title: 班委
-order: 8
+order: 5
 ---
 # 班委
 

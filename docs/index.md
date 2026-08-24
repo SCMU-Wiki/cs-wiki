@@ -13,6 +13,9 @@ hero:
     - theme: brand
       text: 开始阅读
       link: /wiki/welcome
+    - theme: alt
+      text: 贡献指南
+      link: /contributing
 
 features:
   - title: 入学必看 📦

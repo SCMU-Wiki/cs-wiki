@@ -1,6 +1,6 @@
 ---
 title: 体测
-order: 24
+order: 6
 ---
 # 体测
 

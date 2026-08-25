@@ -1,6 +1,6 @@
 ---
 title: 选课
-order: 20
+order: 2
 ---
 # 选课
 

@@ -17,7 +17,7 @@ next:
 
 - [绩点与综测](/wiki/academic/gpa)：大学最重要的两个数字
 - [选课](/wiki/academic/courses)：怎么选、选什么
-- [挂科与保研](/wiki/academic/fail-postgraduate)：两条红线与一条长线
+- [保研](/wiki/academic/fail-postgraduate)：两条红线与一条长线
 - [奖助学金](/wiki/academic/scholarship)：评奖规则与前置条件
 - [四六级及英语免修](/wiki/academic/cet)：毕业必备通行证
 - [体测](/wiki/academic/pe)：跑不过去毕不了业（bushi）

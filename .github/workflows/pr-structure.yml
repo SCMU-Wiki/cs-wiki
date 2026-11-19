@@ -1,0 +1,41 @@
+name: PR 结构检查
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+permissions: {}
+
+jobs:
+  check:
+    name: 检查 PR 描述
+    runs-on: ubuntu-latest
+    steps:
+      - name: 校验栏目和勾选项
+        shell: python
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          import os
+          import re
+          import sys
+
+          body = re.sub(r"<!--.*?-->", "", os.environ["PR_BODY"], flags=re.S)
+          sections = re.split(r"(?m)^# +(.+?)[ \t]*$", body.replace("\r\n", "\n"))
+          if sections[1::2] != ["反馈类型", "涉及板块", "修改细节描述"]:
+              sys.exit("请按模板顺序保留三个一级标题：反馈类型、涉及板块、修改细节描述。")
+
+          feedback, areas, details = sections[2::2]
+          groups = [
+              ("反馈类型", feedback, "补充新内容（投稿）|纠错（文档里标注了需要修正的地方）"),
+              ("涉及板块", areas, "入学必看|生活指南|学业规划|学生组织"),
+          ]
+          errors = []
+          for title, content, options in groups:
+              checked = rf"(?m)^- \[[xX]\] +(?:{options}|其他(?:[：:].*)?)[ \t]*$"
+              if not re.search(checked, content):
+                  errors.append(f"请在「{title}」中至少勾选一项。")
+          if not details.strip():
+              errors.append("请在「修改细节描述」中填写本次改动。")
+          if errors:
+              sys.exit("\n".join(errors))
